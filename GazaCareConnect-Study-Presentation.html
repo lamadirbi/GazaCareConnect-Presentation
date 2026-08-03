@@ -98,14 +98,32 @@ tr:nth-child(even) td{background:#f7fbfc}
 .gallery.g1 .shot img{max-height:500px}
 .caption{padding:10px 12px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line)}
 .section-slide .slide-title{margin-top:8vh;font-size:clamp(30px,4.5vw,48px)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 14px;border-top:1px solid var(--line)}
-.nav-mid{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center}
-.nav button{width:42px;height:42px;border:0;border-radius:50%;background:rgba(15,143,134,.1);color:var(--teal2);cursor:pointer;font-size:16px}
-.nav button:hover{background:var(--teal2);color:#fff}
-.progress-text{font-family:var(--en);font-size:12px;color:var(--muted);min-width:84px;text-align:center}
+.nav{
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;
+  padding:8px 16px;border-top:1px solid var(--line);background:#fff;min-height:66px
+}
+.nav-mid{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
+.nav-actions{display:flex;align-items:center;gap:8px}
+.nav-btn{
+  display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border:1px solid var(--line);
+  border-radius:999px;background:#fff;color:var(--teal2);cursor:pointer;font:700 13px var(--ar)
+}
+.nav-btn:hover{background:var(--teal2);color:#fff;border-color:var(--teal2)}
+.nav-btn span.arrow{font-family:var(--en);font-size:16px;line-height:1}
+.progress-text{
+  font-family:var(--ar);font-size:12px;color:var(--muted);text-align:center;font-weight:700
+}
+.chapter-rail{
+  display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;max-width:100%
+}
 .bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--teal),#7ad9d1);z-index:30;width:0;transition:width .25s}
-.chip{border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:999px;padding:5px 9px;font-size:10px;cursor:pointer;font-family:var(--en)}
+.chip{
+  border:1px solid var(--line);background:#fff;color:#355965;border-radius:999px;
+  padding:6px 11px;font-size:12px;cursor:pointer;font-family:var(--ar);font-weight:700;white-space:nowrap
+}
+.chip:hover{border-color:var(--teal);color:var(--teal2)}
 .chip.on{background:var(--teal);color:#fff;border-color:transparent}
+body.en .nav-btn, body.en .chip, body.en .progress-text{font-family:var(--en)}
 .toast{position:fixed;bottom:84px;left:50%;transform:translateX(-50%);background:#fff;border:1px solid var(--line);padding:10px 14px;border-radius:999px;font-size:12px;opacity:0;pointer-events:none;transition:.25s;z-index:40;box-shadow:0 10px 28px rgba(18,48,55,.1)}
 .toast.show{opacity:1}
 .lightbox{position:fixed;inset:0;background:rgba(8,24,28,.78);display:none;align-items:center;justify-content:center;z-index:50;padding:24px;cursor:zoom-out}
@@ -141,12 +159,22 @@ tr:nth-child(even) td{background:#f7fbfc}
   </header>
   <main class="stage" id="stage"></main>
   <footer class="nav">
-    <button type="button" id="prev" aria-label="السابق">→</button>
-    <div class="nav-mid">
-      <div id="rail"></div>
-      <div class="progress-text" id="prog">1 / 1</div>
+    <div class="nav-actions">
+      <button type="button" class="nav-btn" id="prev" aria-label="السابق">
+        <span class="arrow" id="prevArrow">→</span>
+        <span id="prevLabel">السابق</span>
+      </button>
     </div>
-    <button type="button" id="next" aria-label="التالي">←</button>
+    <div class="nav-mid">
+      <div class="chapter-rail" id="rail"></div>
+      <div class="progress-text" id="prog">الشريحة 1 من 1</div>
+    </div>
+    <div class="nav-actions">
+      <button type="button" class="nav-btn" id="next" aria-label="التالي">
+        <span id="nextLabel">التالي</span>
+        <span class="arrow" id="nextArrow">←</span>
+      </button>
+    </div>
   </footer>
 </div>
 <div class="toast" id="toast"></div>
@@ -171,9 +199,28 @@ function renderRail(){
   rail.innerHTML = chapters.map(c=>{
     const first = SLIDES.findIndex(s=>s.chapter===c);
     const on = SLIDES[idx].chapter===c ? 'on' : '';
-    return `<button class="chip ${on}" type="button" data-i="${first}">${lang==='ar'?'فصل':'Ch'} ${c}</button>`;
+    const label = lang==='ar' ? (`الفصل ${c}`) : (`Ch ${c}`);
+    return `<button class="chip ${on}" type="button" data-i="${first}">${label}</button>`;
   }).join('');
   rail.querySelectorAll('.chip').forEach(b=>b.onclick=()=>go(+b.dataset.i));
+}
+
+function updateNavLabels(){
+  const prevLabel = document.getElementById('prevLabel');
+  const nextLabel = document.getElementById('nextLabel');
+  const prevArrow = document.getElementById('prevArrow');
+  const nextArrow = document.getElementById('nextArrow');
+  if(lang==='ar'){
+    prevLabel.textContent = 'السابق';
+    nextLabel.textContent = 'التالي';
+    prevArrow.textContent = '→';
+    nextArrow.textContent = '←';
+  } else {
+    prevLabel.textContent = 'Prev';
+    nextLabel.textContent = 'Next';
+    prevArrow.textContent = '←';
+    nextArrow.textContent = '→';
+  }
 }
 
 function shot(im){
@@ -265,7 +312,8 @@ function render(){
     });
   });
 
-  prog.textContent = `${idx+1} / ${SLIDES.length}`;
+  prog.textContent = lang==='ar' ? `الشريحة ${idx+1} من ${SLIDES.length}` : `Slide ${idx+1} of ${SLIDES.length}`;
+  updateNavLabels();
   bar.style.width = `${((idx+1)/SLIDES.length)*100}%`;
   renderRail();
   // reset scroll to top of new slide
