@@ -119,7 +119,8 @@ tr:nth-child(even) td{background:#f7fbfc}
 .nav-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .nav-btn{
   display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border:1px solid var(--line);
-  border-radius:999px;background:#fff;color:var(--teal2);cursor:pointer;font:700 13px var(--ar)
+  border-radius:999px;background:#fff;color:var(--teal2);cursor:pointer;font:700 13px var(--ar);
+  position:relative
 }
 .nav-btn:hover{background:var(--teal2);color:#fff;border-color:var(--teal2)}
 .nav-btn span.arrow{font-family:var(--en);font-size:16px;line-height:1}
@@ -178,6 +179,46 @@ body.en .nav-btn, body.en .chip, body.en .progress-text{font-family:var(--en)}
   font:800 20px var(--en);cursor:pointer;box-shadow:0 8px 22px rgba(0,0,0,.18)
 }
 .hint{color:var(--muted);font-size:12px;margin-top:8px}
+
+/* ===== Mobile / responsive ===== */
+@media (max-width:860px){
+  #app{grid-template-rows:auto minmax(0,1fr) auto}
+  .topbar{flex-wrap:wrap;align-items:center;gap:8px;padding:8px 10px;height:auto}
+  .brand{min-width:0;flex:1}
+  .brand h1{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:52vw}
+  .brand small{display:none}
+  .logo{width:32px;height:32px}
+  .actions{width:100%;overflow-x:auto;flex-wrap:nowrap;gap:4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .actions::-webkit-scrollbar{display:none}
+  .btn{flex:0 0 auto;padding:7px 10px;font-size:11px;white-space:nowrap}
+  .slide{padding:14px 12px 20px}
+  .slide-title{max-width:none;font-size:clamp(20px,6.2vw,28px)}
+  .section-slide .slide-title{margin-top:3vh;font-size:clamp(22px,7vw,34px)}
+  .summary-point,.bullet{padding:10px 12px;gap:10px}
+  .summary-point p{font-size:14.5px;line-height:1.7}
+  .bullet p,.lead,.note{font-size:13.5px;line-height:1.65}
+  .summary-point .n,.num{width:24px;height:24px;font-size:11px}
+  .table-wrap{-webkit-overflow-scrolling:touch}
+  table{font-size:12px;min-width:480px}
+  th,td{padding:8px}
+  .gallery.g1 .shot .img-box{min-height:160px;max-height:280px}
+  .shot img,.gallery.g1 .shot img{max-height:240px}
+  .nav{grid-template-columns:auto 1fr auto;gap:8px;padding:8px 10px;min-height:0}
+  .nav-btn{height:36px;padding:0 10px}
+  .nav-btn #prevLabel,.nav-btn #nextLabel{
+    position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)
+  }
+  .progress-text{font-size:12px}
+  .chip{padding:5px 9px;font-size:11px}
+  .lightbox{padding:8px}
+  .lightbox-stage{width:100%;height:min(78vh,720px);border-radius:10px}
+  .lightbox-ui{bottom:12px}
+  .lightbox-close{top:10px}
+}
+@media (max-width:480px){
+  .btn#btnFs,a#btnPptxEn{display:none}
+}
+
 @media print{
   .topbar,.nav,.bar,.hint,.lightbox,.toast,.lightbox-ui,.lightbox-close{display:none!important}
   html,body{background:#fff!important;overflow:visible!important;height:auto!important}
