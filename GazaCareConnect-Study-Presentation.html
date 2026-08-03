@@ -205,7 +205,6 @@ body.en .nav-btn, body.en .chip, body.en .progress-text{font-family:var(--en)}
       <button class="btn" id="btnFs" type="button">ملء الشاشة</button>
       <a class="btn primary" id="btnPptx" href="GazaCareConnect-Presentation.pptx" download>تصدير PPTX</a>
       <a class="btn" id="btnPptxEn" href="GazaCareConnect-Presentation-EN.pptx" download>PPTX EN</a>
-      <button class="btn" id="btnPdf" type="button">تصدير PDF</button>
     </div>
   </header>
   <main class="stage" id="stage"></main>
@@ -302,7 +301,6 @@ function render(){
     ? 'مشروع تخرج · هندسة البرمجيات'
     : 'Graduation Project · Software Engineering';
   document.getElementById('btnFs').textContent = lang==='ar' ? 'ملء الشاشة' : 'Fullscreen';
-  document.getElementById('btnPdf').textContent = lang==='ar' ? 'تصدير PDF' : 'Export PDF';
   document.getElementById('btnPptx').textContent = lang==='ar' ? 'تصدير PPTX' : 'Export PPTX AR';
   document.getElementById('btnPptxEn').textContent = lang==='ar' ? 'PPTX إنجليزي' : 'Export PPTX EN';
 
@@ -393,10 +391,6 @@ document.getElementById('btnEn').onclick = ()=>{ lang='en'; render(); };
 document.getElementById('btnFs').onclick = ()=>{
   if(!document.fullscreenElement) document.documentElement.requestFullscreen();
   else document.exitFullscreen();
-};
-document.getElementById('btnPdf').onclick = ()=>{
-  showToast(lang==='ar' ? 'من نافذة الطباعة اختاروا Save as PDF' : 'Choose Save as PDF in the print dialog');
-  setTimeout(()=>window.print(), 300);
 };
 
 let lbScale = 1, lbX = 0, lbY = 0, lbDragging = false, lbLastX = 0, lbLastY = 0;
