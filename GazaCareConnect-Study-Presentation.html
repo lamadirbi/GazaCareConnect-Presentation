@@ -24,7 +24,7 @@ body.en table{direction:ltr}
 .topbar,.nav{background:#fff;border-color:var(--line)}
 .topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 14px;border-bottom:1px solid var(--line)}
 .brand{display:flex;gap:10px;align-items:center;min-width:0}
-.logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--teal),var(--teal2));color:#fff;display:grid;place-items:center;font-family:var(--en);font-weight:800}
+.logo{width:40px;height:40px;border-radius:10px;overflow:hidden;background:#061016;flex-shrink:0;display:block;object-fit:cover}
 .brand h1{font-size:14px;margin:0}
 .brand small{display:block;color:var(--muted);font-size:11px;font-family:var(--en)}
 .actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
@@ -193,7 +193,7 @@ body.en .nav-btn, body.en .chip, body.en .progress-text{font-family:var(--en)}
 <div id="app">
   <header class="topbar">
     <div class="brand">
-      <div class="logo">GC</div>
+      <img class="logo" src="presentation-assets/brand/logo.png" alt="GazaCare Connect" width="40" height="40">
       <div>
         <h1>GazaCare Connect</h1>
         <small id="brandSub">مشروع تخرج · هندسة البرمجيات</small>
