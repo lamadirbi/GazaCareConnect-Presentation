@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GazaCare Connect — عرض المشروع</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Outfit:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#f5fafb; --ink:#123037; --muted:#4f6d74; --teal:#0f8f86; --teal2:#0b6f69;
+  --line:rgba(15,143,134,.16); --card:#fff; --warn:#7a5c00;
+  --ar:"Cairo",sans-serif; --en:"Outfit",sans-serif;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(--ar)}
+body{overflow:hidden}
+body.en{font-family:var(--en)}
+body.en .slide-title,body.en .summary,body.en .bullet,body.en .note,body.en .caption,body.en .section-sub{direction:ltr;text-align:left}
+body.en table{direction:ltr}
+#app{height:100%;display:grid;grid-template-rows:58px minmax(0,1fr) 66px}
+.topbar,.nav{background:#fff;border-color:var(--line)}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 14px;border-bottom:1px solid var(--line)}
+.brand{display:flex;gap:10px;align-items:center;min-width:0}
+.logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--teal),var(--teal2));color:#fff;display:grid;place-items:center;font-family:var(--en);font-weight:800}
+.brand h1{font-size:14px;margin:0}
+.brand small{display:block;color:var(--muted);font-size:11px;font-family:var(--en)}
+.actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.btn{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:8px 12px;font:700 12px var(--ar);cursor:pointer;text-decoration:none}
+.btn.primary{background:linear-gradient(135deg,var(--teal),var(--teal2));color:#fff;border:0}
+.btn.active{background:rgba(15,143,134,.12);color:var(--teal2);border-color:var(--teal)}
+.stage{min-height:0;overflow:hidden;position:relative}
+.slide{
+  position:absolute;inset:0;display:none;overflow:auto;overscroll-behavior:contain;
+  padding:22px 28px 28px;
+  background:
+    radial-gradient(800px 360px at 100% 0%, rgba(15,143,134,.08), transparent 60%),
+    radial-gradient(700px 320px at 0% 100%, rgba(11,111,105,.06), transparent 55%),
+    var(--bg);
+  -webkit-overflow-scrolling:touch;
+}
+.slide.active{display:block;animation:in .35s ease}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.slide-inner{max-width:1180px;margin:0 auto;padding-bottom:24px}
+.kicker{font-family:var(--en);letter-spacing:.12em;text-transform:uppercase;color:var(--teal);font-size:11px;margin-bottom:8px}
+.slide-title{font-size:clamp(24px,3.2vw,36px);line-height:1.35;margin:0 0 10px;max-width:28ch}
+.section-sub{color:var(--muted);font-size:15px;margin:0 0 14px;line-height:1.7}
+.summary{
+  background:#fff;border:1px solid var(--line);border-right:4px solid var(--teal);
+  border-radius:16px;padding:14px 16px;margin-bottom:16px;line-height:1.9;font-size:15px;
+  box-shadow:0 8px 24px rgba(18,48,55,.04)
+}
+.layout{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;align-items:start}
+.layout.solo,.layout.gallery-only{grid-template-columns:1fr}
+@media(max-width:980px){.layout{grid-template-columns:1fr}}
+.bullets{display:flex;flex-direction:column;gap:10px}
+.bullet{
+  display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line);
+  border-radius:14px;padding:12px 14px;box-shadow:0 6px 18px rgba(18,48,55,.04)
+}
+.num{flex:0 0 auto;width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(135deg,var(--teal),var(--teal2));color:#fff;font-family:var(--en);font-weight:800;font-size:12px}
+.bullet p{margin:0;font-size:15px;line-height:1.75}
+.note{margin-top:12px;color:var(--warn);font-weight:700;font-size:13.5px;line-height:1.7}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:0 6px 18px rgba(18,48,55,.04)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{padding:11px 12px;border-bottom:1px solid rgba(15,143,134,.1);vertical-align:top;line-height:1.65}
+th{background:rgba(15,143,134,.1);color:#0b5f59;position:sticky;top:0}
+tr:nth-child(even) td{background:#f7fbfc}
+.gallery{display:grid;gap:12px}
+.gallery.g1{grid-template-columns:1fr}
+.gallery.g2{grid-template-columns:1fr 1fr}
+.gallery.g3,.gallery.g4,.gallery.g5{grid-template-columns:1fr 1fr}
+@media(max-width:700px){.gallery.g2,.gallery.g3,.gallery.g4,.gallery.g5{grid-template-columns:1fr}}
+.shot{
+  background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;
+  box-shadow:0 8px 22px rgba(18,48,55,.05);cursor:zoom-in
+}
+.shot .img-box{
+  background:#eef6f7;min-height:180px;max-height:420px;display:flex;align-items:center;justify-content:center;padding:10px
+}
+.gallery.g1 .shot .img-box{min-height:280px;max-height:520px}
+.shot img{max-width:100%;max-height:400px;width:auto;height:auto;object-fit:contain;display:block}
+.gallery.g1 .shot img{max-height:500px}
+.caption{padding:10px 12px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line)}
+.section-slide .slide-title{margin-top:8vh;font-size:clamp(30px,4.5vw,48px)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 14px;border-top:1px solid var(--line)}
+.nav-mid{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center}
+.nav button{width:42px;height:42px;border:0;border-radius:50%;background:rgba(15,143,134,.1);color:var(--teal2);cursor:pointer;font-size:16px}
+.nav button:hover{background:var(--teal2);color:#fff}
+.progress-text{font-family:var(--en);font-size:12px;color:var(--muted);min-width:84px;text-align:center}
+.bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--teal),#7ad9d1);z-index:30;width:0;transition:width .25s}
+.chip{border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:999px;padding:5px 9px;font-size:10px;cursor:pointer;font-family:var(--en)}
+.chip.on{background:var(--teal);color:#fff;border-color:transparent}
+.toast{position:fixed;bottom:84px;left:50%;transform:translateX(-50%);background:#fff;border:1px solid var(--line);padding:10px 14px;border-radius:999px;font-size:12px;opacity:0;pointer-events:none;transition:.25s;z-index:40;box-shadow:0 10px 28px rgba(18,48,55,.1)}
+.toast.show{opacity:1}
+.lightbox{position:fixed;inset:0;background:rgba(8,24,28,.78);display:none;align-items:center;justify-content:center;z-index:50;padding:24px;cursor:zoom-out}
+.lightbox.show{display:flex}
+.lightbox img{max-width:min(1200px,96vw);max-height:90vh;object-fit:contain;background:#fff;border-radius:12px;padding:8px}
+.hint{color:var(--muted);font-size:12px;margin-top:8px}
+@media print{
+  .topbar,.nav,.bar,.hint{display:none!important}
+  #app{grid-template-rows:1fr}
+  .slide{position:relative;display:block!important;overflow:visible;page-break-after:always;height:auto}
+}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div id="app">
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">GC</div>
+      <div>
+        <h1>GazaCare Connect</h1>
+        <small id="brandSub">مشروع تخرج · هندسة البرمجيات</small>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn active" id="btnAr" type="button">العربية</button>
+      <button class="btn" id="btnEn" type="button">English</button>
+      <button class="btn" id="btnFs" type="button">ملء الشاشة</button>
+      <a class="btn primary" id="btnPptx" href="GazaCareConnect-Presentation.pptx" download>تصدير PPTX</a>
+      <a class="btn" id="btnPptxEn" href="GazaCareConnect-Presentation-EN.pptx" download>PPTX EN</a>
+      <button class="btn" id="btnPdf" type="button">تصدير PDF</button>
+    </div>
+  </header>
+  <main class="stage" id="stage"></main>
+  <footer class="nav">
+    <button type="button" id="prev" aria-label="السابق">→</button>
+    <div class="nav-mid">
+      <div id="rail"></div>
+      <div class="progress-text" id="prog">1 / 1</div>
+    </div>
+    <button type="button" id="next" aria-label="التالي">←</button>
+  </footer>
+</div>
+<div class="toast" id="toast"></div>
+<div class="lightbox" id="lightbox"><img id="lightboxImg" alt="" /></div>
+<script>
+const SLIDES = [{"id": "title", "chapter": null, "kind": "hero", "title": {"ar": "GazaCare Connect", "en": "GazaCare Connect"}, "subtitle": {"ar": "جسر طبي عن بُعد يربط مرضى قطاع غزة بأطباء متخصصين خارج المنطقة", "en": "A remote medical bridge linking Gaza patients with external specialists"}, "summary": {"ar": "هذا العرض يلخّص مشروع التخرج بلغة واضحة: ما المشكلة؟ ماذا بنينا؟ وكيف يعمل النظام من التحليل حتى الاختبار.", "en": "A clear walkthrough of the graduation project: problem, solution, and how the system works from analysis to testing."}, "bullets": {"ar": ["جامعة فلسطين — قسم هندسة البرمجيات", "مشروع تخرج للعام الدراسي 2025–2026", "المشرف: د. فاطمة الرباعي"], "en": ["University of Palestine — Software Engineering", "Graduation Project 2025–2026", "Supervisor: Dr. Fatma Alrubaei"]}, "images": [{"src": "presentation-assets/media/image63.png", "caption_ar": "الصفحة الرئيسية للمنصة", "caption_en": "Home page"}], "timing": "0:30", "note": {"ar": "", "en": ""}, "table": null}, {"id": "agenda", "chapter": null, "kind": "content", "title": {"ar": "ترتيب العرض", "en": "Agenda"}, "summary": {"ar": "نعرض المشروع فصلًا فصلًا: من المقدمة والمشكلة، إلى الأدبيات والمنهجية، ثم التصميم والتنفيذ والاختبار، ونختم بالنتائج والتوصيات.", "en": "We present chapter by chapter: introduction, literature, methodology, design, implementation, testing, then conclusions."}, "bullets": {"ar": ["الفصل 1: الخلفية ومشكلة البحث (حوالي دقيقتين ونصف)", "الفصل 2: التقنيات والدراسات السابقة", "الفصل 3: المنهجية والاستبيان والمتطلبات", "الفصل 4: حالات الاستخدام للأدوار الثلاثة", "الفصل 5: مخططات UML والتصميم", "الفصل 6: التنفيذ والواجهات", "الفصل 7: الاختبار والأمان", "الفصل 8: الخلاصة والتوصيات"], "en": ["Ch.1 Background and research problem (~2.5 min)", "Ch.2 Technologies and related studies", "Ch.3 Methodology, survey, requirements", "Ch.4 Use cases for three roles", "Ch.5 UML modeling and design", "Ch.6 Implementation and interfaces", "Ch.7 Testing and security", "Ch.8 Conclusion and recommendations"]}, "note": {"ar": "يمكنكم التمرير داخل الشريحة إن كان المحتوى أطول من الشاشة.", "en": "Scroll inside a slide if content is taller than the screen."}, "timing": "0:20", "subtitle": {"ar": "", "en": ""}, "table": null, "images": []}, {"id": "ch1", "chapter": 1, "kind": "section", "title": {"ar": "الفصل الأول — المقدمة", "en": "Chapter 1 — Introduction"}, "summary": {"ar": "الفصل الأول يقدّم الإطار العام لمشروع GazaCare Connect. يعاني النظام الصحي في قطاع غزة من نقص حاد في الأطباء المتخصصين وضغط سكاني مرتفع على المرافق الصحية، بسبب قيود سياسية واقتصادية وبنية تحتية طويلة الأمد. هذا يؤدي إلى تأخر المرضى في الحصول على المشورة الطبية، خصوصًا في الحالات التي تحتاج تقييمًا تخصصيًا أو رأيًا طبيًا ثانيًا، فيضطر كثير منهم إلى الاعتماد على قنوات غير رسمية مثل وسائل التواصل الاجتماعي، وهي…", "en": "Context, problem, objectives, significance, and scope."}, "timing": "2:30", "subtitle": {"ar": "", "en": ""}, "bullets": {"ar": [], "en": []}, "note": {"ar": "", "en": ""}, "table": null, "images": []}, {"id": "ch1-main", "chapter": 1, "kind": "content", "title": {"ar": "الخلفية والمشكلة والحل", "en": "Background, Problem, and Solution"}, "summary": {"ar": "نبدأ من الواقع الصحي في غزة: نقص المتخصصين وضغط كبير على المرافق. كثير من المرضى يلجؤون إلى واتساب وفيسبوك لطلب رأي طبي، وهذه وسيلة غير آمنة وغير منظمة. لذلك صممنا منصة إلكترونية رسمية وآمنة للاستشارة التخصصية عن بُعد، دون أن تكون بديلًا عن الطوارئ أو العيادة الحضورية.", "en": "Gaza faces specialist shortages and facility pressure. Many patients use informal channels. We built a secure formal remote-consultation platform—not an emergency substitute."}, "bullets": {"ar": ["المشروع يربط مرضى داخل غزة بأطباء متخصصين خارج غزة، ويقتصر على الاستشارات الطبية غير الطارئة.", "مشكلة البحث: غياب منصة آمنة/منظمة/متكاملة للاستشارة الطبية عن بُعد لمرضى غزة.", "عشرة أسئلة بحثية تقابلها عشرة أهداف بحثية بنفس الترتيب.", "خمسة أبعاد للأهمية: إنسانية، علمية، تقنية، مجتمعية، سياساتية/استراتيجية.", "النطاق: جغرافي (غزة↔خارجها)، وظيفي (تسجيل/استشارة/رفع ملفات/رد الطبيب/إدارة بيانات)، تقني (منصة ويب).", "المحددات الأربعة: الإنترنت والبنية التحتية، القوانين والخصوصية، عدم بديلية الطوارئ/الحضوري، خصوصية السياق."], "en": ["The problem is missing a secure organized platform—not missing medicine itself.", "Core attributes: secure, organized, integrated.", "Non-emergency consultations only.", "Bridge between Gaza patients and external specialists.", "Supports text consults, file uploads, and follow-up.", "Scope and limitations must be stated clearly."]}, "timing": "1:20", "subtitle": {"ar": "", "en": ""}, "note": {"ar": "", "en": ""}, "table": null, "images": []}, {"id": "ch1-scope", "chapter": 1, "kind": "table", "title": {"ar": "الأهداف والنطاق والحدود", "en": "Objectives, Scope, and Limits"}, "summary": {"ar": "الهدف الرئيس: بناء منصة تطبيب عن بُعد آمنة ومتكاملة. النطاق: مرضى داخل غزة وأطباء خارجها، عبر الويب، باستشارات نصية وملفات طبية.", "en": "Main goal: a secure integrated telemedicine platform for Gaza patients and external physicians via web text consults."}, "table": {"headers_ar": ["البند", "المضمون"], "headers_en": ["Item", "Content"], "rows_ar": [["الهدف الرئيس", "تصميم وتطوير منصة استشارات طبية عن بُعد آمنة ومنظمة"], ["ما نقدمه", "تسجيل، ملف طبي، استشارة، رفع تقارير، رد الطبيب، متابعة، تحقق الأطباء"], ["الأهمية", "إنسانية وتقنية ومجتمعية: وصول أفضل وخصوصية أعلى وتقليل الضغط غير الضروري"], ["النطاق", "مرضى غزة + أطباء خارجها · منصة ويب · استشارات غير طارئة"], ["الحدود", "ضعف الإنترنت · القيود القانونية · ليس للطوارئ · نتائج مرتبطة بسياق غزة"]], "rows_en": [["Main objective", "Design and build a secure organized remote consultation platform"], ["What we offer", "Auth, medical profile, consults, uploads, replies, follow-up, physician verification"], ["Significance", "Human, technical, and social value: better access and privacy"], ["Scope", "Gaza patients + external physicians · web · non-emergency"], ["Limits", "Weak internet · legal constraints · not ER · Gaza-specific context"]]}, "timing": "1:00", "subtitle": {"ar": "", "en": ""}, "bullets": {"ar": [], "en": []}, "note": {"ar": "", "en": ""}, "images": []}, {"id": "ch2", "chapter": 2, "kind": "section", "title": {"ar": "الفصل الثاني — مراجعة الأدبيات", "en": "Chapter 2 — Literature Review"}, "summary": {"ar": "يستعرض الفصل الثاني الأدبيات والتقنيات ذات الصلة بمشروع GazaCare Connect. من ناحية أدوات التصميم، استُخدم Figma لتصميم واجهات المستخدم والنماذج التفاعلية، وEdraw Max لمخططات سير العمل والهيكل الإداري، وDraw.io لمخططات قاعدة البيانات وتدفق البيانات. أما من ناحية تقنيات الويب، فقد بُنيت الواجهة الأمامية باستخدام React.js وNext.js لتحسين الأداء وتحسين محركات البحث عبر العرض من جانب الخادم، إلى جانب HTML5 وCSS3…", "en": "Technologies, related platforms, and the research gap."}, "timing": "2:00", "subtitle": {"ar": "", "en": ""}, "bullets": {"ar": [], "en": []}, "note": {"ar": "", "en": ""}, "table": null, "images": []}, {"id": "ch2-tech", "chapter": 2, "kind": "table", "title": {"ar": "التقنيات التي اعتمدناها ولماذا", "en": "Chosen Technologies and Why"}, "summary": {"ar": "اخترنا أدوات عملية تناسب منصة صحية حديثة: تصميم الواجهة في Figma، والنمذجة في Draw.io وEdraw Max، والواجهة بـ React وNext.js، والخادم بـ Laravel وMySQL.", "en": "Practical stack for a modern health platform: Figma, Draw.io/Edraw, React/Next.js, Laravel, MySQL."}, "table": {"headers_ar": ["المجال", "الأداة", "سبب الاختيار"], "headers_en": ["Area", "Tool", "Why"], "rows_ar": [["تصميم الواجهة", "Figma", "نماذج واضحة وتعاون سريع قبل البرمجة"], ["المخططات", "Edraw Max و Draw.io", "توضيح التدفق وUML وقاعدة البيانات"], ["الواجهة الأمامية", "React و Next.js و TypeScript", "واجهة سريعة وقابلة للصيانة"], ["الخادم", "Laravel و PHP", "مصادقة وصلاحيات وأمان مناسب للبيانات الطبية"], ["قاعدة البيانات", "MySQL", "تخزين منظم لعلاقات المرضى والاستشارات والملفات"]], "rows_en": [["UI design", "Figma", "Clear prototypes before coding"], ["Diagrams", "Edraw Max & Draw.io", "Flows, UML, and database design"], ["Frontend", "React, Next.js, TypeScript", "Fast maintainable interface"], ["Backend", "Laravel & PHP", "Auth and security for medical data"], ["Database", "MySQL", "Structured storage for consults and files"]]}, "images": [{"src": "presentation-assets/media/image5.png", "caption_ar": "React", "caption_en": "React"}, {"src": "presentation-assets/media/image6.png", "caption_ar": "Next.js", "caption_en": "Next.js"}, {"src": "presentation-assets/media/image11.png", "caption_ar": "Laravel", "caption_en": "Laravel"}], "timing": "0:50", "subtitle": {"ar": "", "en": ""}, "bullets": {"ar": [], "en": []}, "note": {"ar": "", "en": ""}}, {"id": "ch2-gap", "chapter": 2, "kind": "content", "title": {"ar": "ماذا ناقص في المنصات السابقة؟", "en": "What Was Missing in Related Platforms?"}, "summary": {"ar": "راجعنا Gxza Health وMENA Health وHeal Gaza. فيها فوائد مثل التوعية وسهولة الدخول، لكن ينقصها غالبًا: استشارة تخصصية منظمة، رفع تقارير داخل المنصة، تواصل رسمي بدل أدوات خارجية، وتحقق واضح من الأطباء.", "en": "Related platforms help with education and access, but often lack structured specialty consults, in-app uploads, formal messaging, and physician verification."}, "bullets": {"ar": ["أدوات التصميم: Figma (واجهات) / Edraw Max (سير عمل) / Draw.io (قاعدة بيانات وتدفق بيانات).", "الواجهة الأمامية: React.js + Next.js (أداء وSEO) + TypeScript + HTML5 + CSS3، عبر VS Code.", "الواجهة الخلفية: Laravel (PHP) + MySQL + phpMyAdmin.", "Gxza Health: مخصص لغزة لكن بلا رفع ملفات منظم ولا تصنيف شدة، ويعتمد وسطاء يقللون الخصوصية.", "MENA Health: تغطية إقليمية واسعة لكن يعتمد تيليجرام خارجيًا ولا يدعم اللغة العربية."], "en": ["Design tools: Figma / Edraw / Draw.io", "Frontend: React + Next.js + TypeScript", "Backend: Laravel + MySQL", "Gap: specialty + files + privacy + verified physicians", "Our contribution fills that gap for Gaza patients"]}, "images": [{"src": "presentation-assets/media/image15.png", "caption_ar": "Gxza Health", "caption_en": "Gxza Health"}, {"src": "presentation-assets/media/image16.png", "caption_ar": "MENA Health", "caption_en": "MENA Health"}, {"src": "presentation-assets/media/image17.jpeg", "caption_ar": "Heal Gaza", "caption_en": "Heal Gaza"}], "timing": "1:00", "subtitle": {"ar": "", "en": ""}, "note": {"ar": "", "en": ""}, "table": null}, {"id": "ch3", "chapter": 3, "kind": "section", "title": {"ar": "الفصل الثالث — منهجية البحث", "en": "Chapter 3 — Research Methodology"}, "summary": {"ar": "يعرض الفصل الثالث منهجية بحث Gaza Care Connect. اعتُمد النموذج التزايدي (Incremental Model) لأنه يوفر نموذجًا أوليًا وظيفيًا مبكرًا، ويدمج ملاحظات المستخدمين، ويدير المخاطر التقنية، ويرتب أولويات الميزات الجوهرية. مرّ التطوير بأربع مراحل: التحليل (تحديد أدوار المريض والطبيب والإداري وفحص القنوات غير الرسمية)، والتصميم (واجهة mobile-first عبر Figma وEdraw Max وDraw.io)، والتنفيذ (React.js وNext.js وTypeScript…", "en": "Incremental model, survey evidence, and requirements."}, "images": [{"src": "presentation-assets/media/image19.jpeg", "caption_ar": "نموذج التطوير التدريجي", "caption_en": "Incremental model"}], "timing": "2:30", "subtitle": {"ar": "", "en": ""}, "bullets": {"ar": [], "en": []}, "note": {"ar": "", "en": ""}, "table": null}, {"id": "ch3-survey", "chapter": 3, "kind": "table", "title": {"ar": "من الاستبيان إلى قرار التصميم", "en": "From Survey to Design Decisions"}, "summary": {"ar": "وزّعنا استبيانًا على 65 مشاركًا. النتائج لم تبقَ أرقامًا فقط؛ كل نتيجة مهمة أثّرت مباشرة على تصميم المنصة.", "en": "A 65-participant survey guided concrete design decisions."}, "table": {"headers_ar": ["ماذا وجدنا؟", "النسبة", "ماذا قررنا في النظام؟"], "headers_en": ["Finding", "%", "System decision"], "rows_ar": [["أصعب الوصول: استشارات جلدية", "30%", "التركيز على استشارات تخصصية بسيطة ومنظمة"], ["الزكام والإنفلونزا من الأكثر طلبًا", "25%", "دعم استشارات سريعة غير طارئة"], ["الرأي الثاني عبر فيسبوك/واتساب", "52%", "بناء بيئة موثّقة بدل القنوات غير الرسمية"], ["تشفير التقارير مهم جدًا", "94%", "حماية قوية للملفات والمصادقة والصلاحيات"], ["ضعف الإنترنت عائق أساسي", "45%", "واجهة خفيفة واستشارة غير متزامنة"], ["نسبة كبيرة مقدمو رعاية", "حوالي 60%", "إضافة وضع مقدّم الرعاية (Caregiver Mode)"]], "rows_en": [["Hardest access: dermatology", "30%", "Focus on structured specialty consults"], ["Cold/flu highly requested", "25%", "Support fast non-emergency consults"], ["Second opinion via FB/WhatsApp", "52%", "Build a verified formal environment"], ["Encryption very important", "94%", "Strong file protection and authorization"], ["Poor internet is a barrier", "45%", "Lightweight UI and async consults"], ["Many respondents are caregivers", "~60%", "Enable Caregiver Mode"]]}, "images": [{"src": "presentation-assets/media/image22.jpeg", "caption_ar": "توزيع الاحتياجات", "caption_en": "Needs distribution"}, {"src": "presentation-assets/media/image23.jpeg", "caption_ar": "قنوات التواصل الحالية", "caption_en": "Current channels"}], "timing": "1:20", "subtitle": {"ar": "", "en": ""}, "bullets": {"ar": [], "en": []}, "note": {"ar": "", "en": ""}}, {"id": "ch3-req", "chapter": 3, "kind": "content", "title": {"ar": "المتطلبات باختصار", "en": "Requirements in Brief"}, "summary": {"ar": "اعتمدنا التطوير التدريجي (Incremental): نحلل، نصمم، ننفّذ، نختبر، ثم نضيف الجزء التالي. المتطلبات تغطي المريض والطبيب والمسؤول، مع أمان عالٍ وواجهة عربية من اليمين لليسار.", "en": "Incremental delivery with patient, physician, and admin requirements, plus security and Arabic RTL usability."}, "bullets": {"ar": ["المنهجية: النموذج التزايدي، بأربع مراحل: تحليل - تصميم - تنفيذ - اختبار.", "الاستبيان: 65 مشاركًا (مرضى ومقدمو رعاية).", "احتياجات طبية صعبة الوصول: جلدية 30%، برد/إنفلونزا 25%، هضمي 20%، صداع/ألم بسيط 25%.", "قنوات التواصل الحالية: فيسبوك/واتساب 52%، معارف شخصية 28%، منصات مدفوعة 10%، لا يوجد 10% (= 80% غير رسمي).", "أهمية التشفير: مهم جدًا 94%، مهم 4%، غير مهم 2%.", "العوائق التقنية: ضعف إنترنت 45%، رفع ملفات كبيرة 35%، واجهة معقدة 20%."], "en": ["Incremental cycles: analysis → design → implementation → testing", "Survey sample: 65 participants", "Key stats shaped core features", "Queue and Direct assignment modes", "Caregiver Mode for family helpers", "NFRs: security, RTL, low-bandwidth performance"]}, "timing": "0:50", "subtitle": {"ar": "", "en": ""}, "note": {"ar": "", "en": ""}, "table": null, "images": []}, {"id": "ch4", "chapter": 4, "kind": "section", "title": {"ar": "الفصل الرابع — حالات الاستخدام", "en": "Chapter 4 — Use Cases"}, "summary": {"ar": "يوثّق الفصل الرابع حالات استخدام GazaCare Connect، وهي إعادة صياغة تفصيلية للمتطلبات الوظيفية الخمسة والعشرين من الفصل الثالث، منظَّمة حسب الفاعل: مريض، طبيب، وإداري، مع تطابق رقمي كامل بين كل حالة استخدام (UC) والمتطلب المقابل (RQ). تضم حالات الاستخدام المشتركة (4.1) ست حالات: تسجيل الدخول، إعادة تعيين كلمة المرور، تغيير كلمة المرور، تحديث الملف الشخصي، استقبال الإشعارات، وتسجيل الخروج. وتضم حالات استخدام المريض…", "en": "Shared, patient, physician, and admin use cases."}, "timing": "2:00", "subtitle": {"ar": "", "en": ""}, "bullets": {"ar": [], "en": []}, "note": {"ar": "", "en": ""}, "table": null, "images": []}, {"id": "ch4-roles", "chapter": 4, "kind": "table", "title": {"ar": "ماذا يفعل كل دور؟", "en": "What Does Each Role Do?"}, "summary": {"ar": "النظام يقوم على ثلاثة أدوار. المشترك بينهم: الدخول، كلمة المرور، الملف، الإشعارات، والخروج. ثم لكل دور مهام خاصة.", "en": "Three roles share login and account basics, then diverge into role-specific tasks."}, "table": {"headers_ar": ["الدور", "أهم ما يستطيع فعله"], "headers_en": ["Role", "Key capabilities"], "rows_ar": [["المريض", "إنشاء حساب، تفعيل وضع مقدّم رعاية، اختيار طبيب أو الطابور، رفع ملفات، متابعة الردود"], ["الطبيب", "التسجيل بانتظار التحقق، استلام حالات من الطابور، الرد مع درجة الشدة، المتابعة"], ["المسؤول", "إدارة المستخدمين، تعطيل الحسابات، قبول أو رفض توثيق الأطباء"]], "rows_en": [["Patient", "Register, caregiver mode, queue/direct consult, uploads, follow-up"], ["Physician", "Pending verification, claim queue, reply with severity, follow-up"], ["Admin", "Manage users, disable accounts, approve/reject physicians"]]}, "note": {"ar": "الطابور (Queue): أول طبيب متاح يستلم الحالة. المباشر (Direct): المريض يختار طبيبًا بعينه.", "en": "Queue: first available verified physician. Direct: patient chooses a specific physician."}, "bullets": {"ar": ["كل حالة استخدام UC-xx مرتبطة رقميًا بنفس المتطلب RQ-xx من الفصل الثالث (تتبع كامل).", "حالات مشتركة (UC-01→06)، مريض (UC-07→14)، طبيب (UC-15→22)، إداري (UC-23→25).", "Queue = قائمة انتظار مشتركة يطالب بها أي طبيب مُوثَّق (مبدأ السبق). Direct = إسناد مباشر لطبيب محدد.", "حدّا الملفات في تقديم الاستشارة: حتى 20 ملفًا، وحجم كل ملف حتى 10 ميجابايت.", "الطبيب غير المُوثَّق يرى اللوحة لكن لا يطالب ولا يرد؛ يفعَّل فقط بعد اعتماد الإداري (UC-25)."], "en": ["Three actors: patient, physician, admin", "Queue vs Direct assignment", "Physician verification before responding", "Severity levels: mild / moderate / critical", "Follow-up messaging after first reply"]}, "timing": "1:40", "subtitle": {"ar": "", "en": ""}, "images": []}, {"id": "ch5", "chapter": 5, "kind": "section", "title": {"ar": "الفصل الخامس — النمذجة والتصميم", "en": "Chapter 5 — Modeling and Design"}, "summary": {"ar": "في هذا الفصل قمنا بنمذجة نظام GazaCare Connect باستخدام لغة النمذجة الموحدة UML. بدأنا بمخطط النشاط الذي يوضح سير العمل الكامل من تسجيل الدخول أو التسجيل، مرورًا بثلاثة مسارات متفرعة حسب الدور: المريض الذي ينشئ استشارة ويختار بين الطابور المشترك أو طبيب محدد، والطبيب الذي يطالع الطابور ويطالب بالحالات ويرد عليها محددًا شدتها، والمدير الذي يراجع طلبات توثيق الأطباء. بعد ذلك عرضنا مخطط حالات الاستخدام الذي يحدد…", "en": "Activity, use case, sequence, and class diagrams."}, "timing": "2:00", "subtitle": {"ar": "", "en": ""}, "bullets": {"ar": [], "en": []}, "note": {"ar": "", "en": ""}, "table": null, "images": []}, {"id": "ch5-uml", "chapter": 5, "kind": "media", "title": {"ar": "المخططات الأساسية", "en": "Core Diagrams"}, "summary": {"ar": "قبل البرمجة وضعنا خريطة واضحة للنظام: مخطط النشاط لمسار الاستشارة، ومخطط حالات الاستخدام للأدوار، ومخططات التسلسل لأهم العمليات، ومخطط الأصناف كأساس لقاعدة البيانات. والنطاق الحالي استشارات نصية غير متزامنة؛ بلا مواعيد وبلا فيديو.", "en": "UML first: activity, use case, sequences, and class diagrams. Scope is async text consults only."}, "bullets": {"ar": ["ثلاثة فاعلين: Admin, Patient, Physician", "لا يوجد نظام مواعيد أو مكالمات فيديو في النطاق الحالي", "تسجيل الطبيب يتطلب موافقة المدير قبل التعامل مع الاستشارات", "التسجيل: POST /api/v1/auth/register — نجاح 201 مع Sanctum token، فشل 422", "تسجيل الدخول: POST /api/v1/auth/login — نجاح 200 مع Sanctum token، فشل 401/403"], "en": ["Activity diagram shows the full consultation path", "Use case diagram maps three actors", "Sequences cover register, login, consult, reply", "Sanctum tokens secure API access", "No appointments or video in current scope"]}, "images": [{"src": "presentation-assets/media/image27.png", "caption_ar": "مخطط النشاط", "caption_en": "Activity diagram"}, {"src": "presentation-assets/media/image28.jpeg", "caption_ar": "مخطط حالات الاستخدام", "caption_en": "Use case diagram"}, {"src": "presentation-assets/media/image36.jpeg", "caption_ar": "مخطط الأصناف", "caption_en": "Class diagram"}], "timing": "1:30", "subtitle": {"ar": "", "en": ""}, "note": {"ar": "", "en": ""}, "table": null}, {"id": "ch6", "chapter": 6, "kind": "section", "title": {"ar": "الفصل السادس — التنفيذ", "en": "Chapter 6 — Implementation"}, "summary": {"ar": "يعرض هذا الفصل كيف تُرجمت مخططات التصميم في الفصل الخامس إلى نظام فعلي عامل. طُوّرت الواجهة الأمامية باستخدام React.js وNext.js وTypeScript، بينما بُني الخادم باستخدام Laravel وPHP، واعتُمدت MySQL كقاعدة بيانات علائقية مع phpMyAdmin كأداة إدارة. يتبع النظام معمارية ثلاثية الطبقات: طبقة العرض (React/Next.js)، ثم طبقة التطبيق (Laravel) التي تحتوي منطق العمل والمصادقة والتفويض، ثم طبقة البيانات (MySQL). في تصميم…", "en": "Architecture, database, modules, and real interfaces."}, "timing": "2:30", "subtitle": {"ar": "", "en": ""}, "bullets": {"ar": [], "en": []}, "note": {"ar": "", "en": ""}, "table": null, "images": []}, {"id": "ch6-arch", "chapter": 6, "kind": "content", "title": {"ar": "كيف بُني النظام تقنيًا؟", "en": "How Was the System Built?"}, "summary": {"ar": "النظام ثلاثي الطبقات: واجهة React/Next.js، وواجهة برمجية Laravel، وقاعدة MySQL. الحسابات في جدول users واحد مع حقل الدور، ولكل مريض وطبيب ملف مرتبط. المصادقة عبر Laravel Sanctum، والصلاحيات حسب الدور.", "en": "Three-tier architecture: React/Next.js, Laravel API, MySQL, Sanctum auth, and role-based access."}, "bullets": {"ar": ["الواجهة الأمامية: React.js + Next.js + TypeScript", "الخادم: Laravel + PHP", "قاعدة البيانات: MySQL، وأداة الإدارة phpMyAdmin", "معمارية ثلاثية الطبقات: العرض → التطبيق (REST API) → البيانات", "جدول users موحّد لجميع الأدوار عبر حقل role (وليس جداول منفصلة)", "لا يوجد جدول توصيات منفصل؛ الرد يُخزَّن داخل جدول consultations وconsultation_messages"], "en": ["Three-tier architecture", "Unified users table with roles", "Consultation module is the core", "Protected medical file storage", "Caregiver Mode and admin verification", "Arabic RTL responsive dashboards"]}, "images": [{"src": "presentation-assets/media/image37.png", "caption_ar": "مخطط قاعدة البيانات", "caption_en": "Database schema"}], "timing": "0:50", "subtitle": {"ar": "", "en": ""}, "note": {"ar": "", "en": ""}, "table": null}, {"id": "ch6-ui-auth", "chapter": 6, "kind": "gallery", "title": {"ar": "واجهات الدخول والتسجيل", "en": "Login and Registration Screens"}, "summary": {"ar": "الدخول موحّد لجميع الأدوار، ثم يوجَّه كل مستخدم إلى لوحته. تسجيل الطبيب يتطلب رفع الشهادات ويبقى معلّقًا حتى موافقة المسؤول.", "en": "Unified login; physician registration stays pending until admin approval."}, "images": [{"src": "presentation-assets/media/image38.png", "caption_ar": "تسجيل الدخول", "caption_en": "Login"}, {"src": "presentation-assets/media/image39.jpeg", "caption_ar": "تسجيل المريض", "caption_en": "Patient registration"}, {"src": "presentation-assets/media/image40.jpeg", "caption_ar": "تسجيل الطبيب مع الشهادات", "caption_en": "Physician registration"}, {"src": "presentation-assets/media/image41.jpeg", "caption_ar": "استعادة كلمة المرور", "caption_en": "Password reset"}], "timing": "0:35", "subtitle": {"ar": "", "en": ""}, "bullets": {"ar": [], "en": []}, "note": {"ar": "", "en": ""}, "table": null}, {"id": "ch6-ui-patient", "chapter": 6, "kind": "gallery", "title": {"ar": "واجهات المريض", "en": "Patient Screens"}, "summary": {"ar": "المريض يحدّث ملفه الطبي، يتصفح الأطباء الموثّقين، يرسل استشارة إلى الطابور أو إلى طبيب محدد، ويرفع التقارير ويتابع الرد.", "en": "Patients manage profiles, browse verified physicians, submit queue/direct consults, and track replies."}, "images": [{"src": "presentation-assets/media/image62.png", "caption_ar": "لوحة المريض", "caption_en": "Patient dashboard"}, {"src": "presentation-assets/media/image43.jpeg", "caption_ar": "الملف الطبي", "caption_en": "Medical profile"}, {"src": "presentation-assets/media/image46.jpeg", "caption_ar": "تصفح الأطباء", "caption_en": "Physician directory"}, {"src": "presentation-assets/media/image47.jpeg", "caption_ar": "إرسال استشارة", "caption_en": "Submit consultation"}, {"src": "presentation-assets/media/image49.jpeg", "caption_ar": "متابعة الاستشارات", "caption_en": "Consultations list"}], "timing": "0:40", "subtitle": {"ar": "", "en": ""}, "bullets": {"ar": [], "en": []}, "note": {"ar": "", "en": ""}, "table": null}, {"id": "ch6-ui-doc", "chapter": 6, "kind": "gallery", "title": {"ar": "واجهات الطبيب والمسؤول", "en": "Physician and Admin Screens"}, "summary": {"ar": "الطبيب يرى الطابور والحالات المباشرة والمكتملة، ويرد مع تحديد شدة الحالة. المسؤول يراجع الحسابات وطلبات توثيق الأطباء.", "en": "Physicians manage queues and replies; admins verify physicians and manage users."}, "images": [{"src": "presentation-assets/media/image59.png", "caption_ar": "لوحة الطبيب", "caption_en": "Physician dashboard"}, {"src": "presentation-assets/media/image51.jpeg", "caption_ar": "نموذج الرد الطبي", "caption_en": "Recommendation form"}, {"src": "presentation-assets/media/image58.png", "caption_ar": "لوحة المسؤول", "caption_en": "Admin dashboard"}, {"src": "presentation-assets/media/image57.png", "caption_ar": "أطباء بانتظار التوثيق", "caption_en": "Pending physicians"}], "timing": "0:35", "subtitle": {"ar": "", "en": ""}, "bullets": {"ar": [], "en": []}, "note": {"ar": "", "en": ""}, "table": null}, {"id": "ch7", "chapter": 7, "kind": "section", "title": {"ar": "الفصل السابع — الاختبار", "en": "Chapter 7 — Testing"}, "summary": {"ar": "طُبّقت في هذا الفصل استراتيجية اختبار متعددة المستويات للتحقق من صحة النظام وظيفيًا وأمنيًا وقابليته للاستخدام، وتم الاختبار بشكل تدريجي منسجم مع نموذج التطوير التزايدي المعتمد في الفصل الثالث. أولًا، اختبار الوحدة باستخدام إطار PHPUnit في Laravel غطّى التحقق من صحة التسجيل، وسلوك رمز المصادقة (401 بدون رمز)، وعمليات الملف الطبي، وتقديم الاستشارة (رفض الأوصاف الأقل من 10 أحرف، حالة Pending الابتدائية)، ورد الطبيب…", "en": "Unit, integration, usability, and security testing."}, "timing": "2:00", "subtitle": {"ar": "", "en": ""}, "bullets": {"ar": [], "en": []}, "note": {"ar": "", "en": ""}, "table": null, "images": []}, {"id": "ch7-main", "chapter": 7, "kind": "table", "title": {"ar": "ماذا اختبرنا؟ وماذا ثبت؟", "en": "What We Tested and Confirmed"}, "summary": {"ar": "الاختبار سار مع كل زيادة تطوير، لا في النهاية فقط. غطينا الوحدة والتكامل وسهولة الاستخدام والأمان.", "en": "Testing followed each increment: unit, integration, usability, and security."}, "table": {"headers_ar": ["نوع الاختبار", "ماذا تحققنا"], "headers_en": ["Test type", "What we verified"], "rows_ar": [["اختبار الوحدة", "التسجيل، التوكن، الملف الطبي، إنشاء الاستشارة، رد الطبيب"], ["اختبار التكامل", "دورة الاستشارة كاملة، رفع الملفات، الصلاحيات، رسائل الخطأ بالعربية"], ["قابلية الاستخدام", "إنجاز المهام بدون مساعدة، صحة الاتجاه من اليمين لليسار، التوافق مع الجوال"], ["الأمان", "رفض الدخول بلا توكن، تشفير كلمات المرور، منع تجاوز الأدوار، حماية الملفات، HTTPS"]], "rows_en": [["Unit", "Registration, tokens, medical profile, consult creation, doctor reply"], ["Integration", "Full consult lifecycle, uploads, authorization, Arabic errors"], ["Usability", "Unaided task completion, RTL correctness, mobile layout"], ["Security", "401 without token, bcrypt, role boundaries, protected files, HTTPS"]]}, "bullets": {"ar": ["إطار اختبار الوحدة: PHPUnit المدمج في Laravel", "الوصف القصير جدًا للاستشارة (أقل من 10 أحرف) يُرفض تلقائيًا", "حالة الاستشارة الابتدائية: Pending، وتصبح Completed بعد رد الطبيب المسند", "طلب بدون رمز مصادقة → 401 (Unauthorized)", "وصول غير مصرّح للملفات أو موارد أخرى → 403 (Forbidden)"], "en": ["PHPUnit for backend units", "End-to-end consultation path verified", "Arabic RTL and mobile checked", "Files stored outside public directory", "Cross-role access correctly blocked"]}, "note": {"ar": "مثال رسالة للمستخدم عند انقطاع الخادم: «فشل الاتصال بالخادم. تحقق من الإنترنت.»", "en": "Friendly Arabic error when the server is unreachable."}, "timing": "1:40", "subtitle": {"ar": "", "en": ""}, "images": []}, {"id": "ch8", "chapter": 8, "kind": "section", "title": {"ar": "الفصل الثامن — الخاتمة والتوصيات", "en": "Chapter 8 — Conclusion"}, "summary": {"ar": "يقدّم هذا الفصل الخاتمة الشاملة لمشروع GazaCare Connect. طُوّر المشروع استجابة لحاجة حقيقية في قطاع غزة إلى منصة إلكترونية آمنة ومنظّمة تتيح للمرضى الوصول لاستشارات طبية متخصصة عن بُعد بطريقة موثوقة وسرّية، وهي حاجة أكّدها استبيان هيكلي شمل أكثر من 60 مشاركًا أظهر اعتمادًا واسعًا على قنوات تواصل غير رسمية للحصول على النصيحة الطبية. طُوّر النظام باستخدام نموذج التطوير التزايدي، ونُمذج باستخدام مخططات UML قياسية،…", "en": "Achievements, recommendations, and future directions."}, "timing": "2:00", "subtitle": {"ar": "", "en": ""}, "bullets": {"ar": [], "en": []}, "note": {"ar": "", "en": ""}, "table": null, "images": []}, {"id": "ch8-main", "chapter": 8, "kind": "content", "title": {"ar": "ماذا أنجز المشروع؟ وماذا نوصي؟", "en": "Achievements and Recommendations"}, "summary": {"ar": "أنجزنا منصة ويب آمنة ومنظمة تربط مرضى غزة بأطباء موثّقين، وتقلل الاعتماد على القنوات غير الرسمية. نوصي المؤسسات بتبنّي حلول مشابهة، ونقترح لاحقًا تطوير تطبيق جوال، وتحليلات إدارية، ودعم لغات، وإمكانية فيديو أو مساعدة ذكية مع بقاء القرار النهائي للطبيب.", "en": "We delivered a secure structured platform and recommend institutional adoption, with clear future options like mobile, analytics, bilingual UI, and optional video/AI assist."}, "bullets": {"ar": ["الحاجة الأساسية: استبيان هيكلي شمل أكثر من 60 مشاركًا (+60 participants)", "نموذج التطوير: التطوير التزايدي (Incremental Development Model)", "المعمارية: ثلاثية الطبقات — React.js/Next.js/TypeScript، Laravel/PHP، MySQL", "استراتيجية الاختبار الشاملة أكدت الأمان والموثوقية والتحكم بالوصول القائم على الأدوار", "أهداف البحث كلها تحققت بنجاح كما ورد في القسم 8.3", "المساهمات أربعة أبعاد: إنسانية، علمية، تقنية، مجتمعية"], "en": ["Objectives from Chapter 1 were achieved", "Secure alternative to informal channels", "Full consult lifecycle implemented", "Recommendations for institutions and policymakers", "Future work stated clearly in the thesis", "Physician remains responsible for medical decisions"]}, "timing": "1:30", "subtitle": {"ar": "", "en": ""}, "note": {"ar": "", "en": ""}, "table": null, "images": []}, {"id": "thanks", "chapter": null, "kind": "hero", "title": {"ar": "شكرًا لحسن استماعكم", "en": "Thank You"}, "subtitle": {"ar": "GazaCare Connect — منصة استشارات طبية عن بُعد آمنة ومنظمة", "en": "GazaCare Connect — a secure structured remote consultation platform"}, "summary": {"ar": "نرحب بأسئلتكم حول المشكلة، التصميم، الأمان، أو طريقة عمل الاستشارة بين المريض والطبيب والمسؤول.", "en": "We welcome questions about the problem, design, security, or consultation workflow."}, "bullets": {"ar": ["بديل عملي عن القنوات غير الرسمية", "مبني على احتياج محلي ظهر في الاستبيان", "قابل للتوسع مع الحفاظ على الأمان والصلاحيات"], "en": ["A practical alternative to informal channels", "Grounded in local survey needs", "Extensible while preserving security and roles"]}, "images": [{"src": "presentation-assets/media/image63.png", "caption_ar": "الواجهة الرئيسية", "caption_en": "Home interface"}], "timing": "0:30", "note": {"ar": "", "en": ""}, "table": null}];
+let lang = 'ar';
+let idx = 0;
+const stage = document.getElementById('stage');
+const prog = document.getElementById('prog');
+const bar = document.getElementById('bar');
+const rail = document.getElementById('rail');
+const toast = document.getElementById('toast');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+
+function t(obj){ return (obj && (obj[lang] || obj.ar || '')) || ''; }
+function showToast(msg){ toast.textContent = msg; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'), 2000); }
+
+function renderRail(){
+  const chapters = [...new Set(SLIDES.map(s=>s.chapter).filter(Boolean))];
+  rail.innerHTML = chapters.map(c=>{
+    const first = SLIDES.findIndex(s=>s.chapter===c);
+    const on = SLIDES[idx].chapter===c ? 'on' : '';
+    return `<button class="chip ${on}" type="button" data-i="${first}">${lang==='ar'?'فصل':'Ch'} ${c}</button>`;
+  }).join('');
+  rail.querySelectorAll('.chip').forEach(b=>b.onclick=()=>go(+b.dataset.i));
+}
+
+function shot(im){
+  return `<figure class="shot" data-full="${im.src}">
+    <div class="img-box"><img src="${im.src}" alt="${im['caption_'+lang]||''}" loading="lazy" /></div>
+    <figcaption class="caption">${im['caption_'+lang]||''}</figcaption>
+  </figure>`;
+}
+
+function render(){
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang==='ar' ? 'rtl' : 'ltr';
+  document.body.classList.toggle('en', lang==='en');
+  document.getElementById('btnAr').classList.toggle('active', lang==='ar');
+  document.getElementById('btnEn').classList.toggle('active', lang==='en');
+  document.getElementById('brandSub').textContent = lang==='ar'
+    ? 'مشروع تخرج · هندسة البرمجيات'
+    : 'Graduation Project · Software Engineering';
+  document.getElementById('btnFs').textContent = lang==='ar' ? 'ملء الشاشة' : 'Fullscreen';
+  document.getElementById('btnPdf').textContent = lang==='ar' ? 'تصدير PDF' : 'Export PDF';
+  document.getElementById('btnPptx').textContent = lang==='ar' ? 'تصدير PPTX' : 'Export PPTX AR';
+  document.getElementById('btnPptxEn').textContent = lang==='ar' ? 'PPTX إنجليزي' : 'Export PPTX EN';
+
+  const s = SLIDES[idx];
+  const bullets = (s.bullets && s.bullets[lang]) || [];
+  const imgs = s.images || [];
+  const hasTable = !!s.table;
+  const hasBullets = bullets.length > 0;
+  const hasImgs = imgs.length > 0;
+  const summary = t(s.summary);
+  const subtitle = t(s.subtitle);
+  const note = t(s.note);
+
+  let body = '';
+  if(s.kind === 'section'){
+    body = `
+      ${summary ? `<div class="summary">${summary}</div>` : ''}
+      ${subtitle ? `<div class="section-sub">${subtitle}</div>` : ''}
+      ${hasImgs ? `<div class="gallery g1">${shot(imgs[0])}</div>` : ''}
+      <p class="hint">${lang==='ar'?'مرّروا للأسفل داخل الشريحة عند الحاجة · السهمين للتنقل بين الشرائح':'Scroll inside the slide if needed · use arrows to change slides'}</p>`;
+  } else {
+    let left = '';
+    if(summary) left += `<div class="summary">${summary}</div>`;
+    if(hasBullets){
+      left += `<div class="bullets">${bullets.map((b,i)=>`<div class="bullet"><div class="num">${i+1}</div><p>${b}</p></div>`).join('')}</div>`;
+    }
+    if(hasTable){
+      const headers = s.table['headers_'+lang] || s.table.headers_ar;
+      const rows = s.table['rows_'+lang] || s.table.rows_ar;
+      left += `<div class="table-wrap" style="margin-top:${hasBullets||summary?'12px':'0'}"><table><thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+    }
+    if(note) left += `<div class="note">${note}</div>`;
+    let right = '';
+    if(hasImgs){
+      const g = Math.min(Math.max(imgs.length,1),5);
+      right = `<div class="gallery g${g}">${imgs.map(shot).join('')}</div>`;
+    }
+    const layoutClass = (!hasImgs ? 'solo' : (s.kind==='gallery' && !hasBullets && !hasTable ? 'gallery-only' : ''));
+    body = `<div class="layout ${layoutClass}"><div>${left}</div>${right?`<div>${right}</div>`:''}</div>
+      <p class="hint">${lang==='ar'?'اضغطوا على الصورة لتكبيرها كاملة بدون قص':'Click an image to open it fully without cropping'}</p>`;
+  }
+
+  const kicker = s.chapter
+    ? ((lang==='ar' ? `الفصل ${s.chapter}` : `Chapter ${s.chapter}`) + (s.timing ? ` · ${s.timing}` : ''))
+    : (s.timing || 'GazaCare Connect');
+
+  stage.innerHTML = `<section class="slide active ${s.kind==='section'||s.kind==='hero'?'section-slide':''}">
+    <div class="slide-inner">
+      <div class="kicker">${kicker}</div>
+      <h2 class="slide-title">${t(s.title)}</h2>
+      ${subtitle && s.kind!=='section' ? `<div class="section-sub">${subtitle}</div>` : ''}
+      ${body}
+    </div>
+  </section>`;
+
+  stage.querySelectorAll('.shot').forEach(fig=>{
+    fig.addEventListener('click', ()=>{
+      lightboxImg.src = fig.dataset.full;
+      lightbox.classList.add('show');
+    });
+  });
+
+  prog.textContent = `${idx+1} / ${SLIDES.length}`;
+  bar.style.width = `${((idx+1)/SLIDES.length)*100}%`;
+  renderRail();
+  // reset scroll to top of new slide
+  const slideEl = stage.querySelector('.slide');
+  if(slideEl) slideEl.scrollTop = 0;
+}
+
+function go(i){ idx = Math.max(0, Math.min(SLIDES.length-1, i)); render(); }
+function next(){ go(idx+1); }
+function prev(){ go(idx-1); }
+
+document.getElementById('next').onclick = next;
+document.getElementById('prev').onclick = prev;
+document.getElementById('btnAr').onclick = ()=>{ lang='ar'; render(); };
+document.getElementById('btnEn').onclick = ()=>{ lang='en'; render(); };
+document.getElementById('btnFs').onclick = ()=>{
+  if(!document.fullscreenElement) document.documentElement.requestFullscreen();
+  else document.exitFullscreen();
+};
+document.getElementById('btnPdf').onclick = ()=>{
+  showToast(lang==='ar' ? 'من نافذة الطباعة اختاروا Save as PDF' : 'Choose Save as PDF in the print dialog');
+  setTimeout(()=>window.print(), 300);
+};
+lightbox.onclick = ()=> lightbox.classList.remove('show');
+
+document.addEventListener('keydown', (e)=>{
+  const slideEl = stage.querySelector('.slide');
+  // allow normal page-like scrolling with arrows only when not at edge? Keep Space/Page for slides.
+  if(['PageDown','PageUp'].includes(e.key) || (e.key===' ' && !e.target.closest('input,textarea'))) e.preventDefault();
+  if(lang==='ar'){
+    if(e.key==='ArrowLeft' || e.key===' ' || e.key==='PageDown') next();
+    if(e.key==='ArrowRight' || e.key==='PageUp') prev();
+  } else {
+    if(e.key==='ArrowRight' || e.key===' ' || e.key==='PageDown') next();
+    if(e.key==='ArrowLeft' || e.key==='PageUp') prev();
+  }
+  if(e.key==='Escape'){ lightbox.classList.remove('show'); if(document.fullscreenElement) document.exitFullscreen(); }
+  if(e.key.toLowerCase()==='e'){ lang='en'; render(); }
+  if(e.key.toLowerCase()==='a'){ lang='ar'; render(); }
+});
+
+// wheel on stage should scroll the active slide, not get trapped
+stage.addEventListener('wheel', (e)=>{
+  const slideEl = stage.querySelector('.slide');
+  if(!slideEl) return;
+  // native overflow handles it; ensure focus
+}, {passive:true});
+
+render();
+</script>
+</body>
+</html>

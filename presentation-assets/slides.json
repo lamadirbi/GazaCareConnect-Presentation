@@ -1,0 +1,1833 @@
+[
+  {
+    "id": "title",
+    "chapter": null,
+    "kind": "hero",
+    "title": {
+      "ar": "GazaCare Connect",
+      "en": "GazaCare Connect"
+    },
+    "subtitle": {
+      "ar": "جسر طبي عن بُعد لاستشارات المتخصصين الخارجيين",
+      "en": "Remote Medical Bridge for External Specialist Consultations"
+    },
+    "bullets": {
+      "ar": [
+        "جامعة فلسطين — هندسة البرمجيات",
+        "مشروع تخرج 2025–2026",
+        "عرض دفاعي مفصّل · ~15 دقيقة (2–3 دقائق/فصل)",
+        "مشرف: د. فاطمة الرباعي"
+      ],
+      "en": [
+        "University of Palestine — Software Engineering",
+        "Graduation Project 2025–2026",
+        "Detailed defense talk · ~15 minutes (2–3 min/chapter)",
+        "Supervisor: Dr. Fatma Alrubaei"
+      ]
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": null,
+    "images": [
+      {
+        "src": "presentation-assets/media/image63.png",
+        "caption_ar": "الصفحة الرئيسية",
+        "caption_en": "Home page"
+      }
+    ],
+    "timing": "0:30"
+  },
+  {
+    "id": "agenda",
+    "chapter": null,
+    "kind": "agenda",
+    "title": {
+      "ar": "خريطة العرض والوقت",
+      "en": "Agenda & Timing"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [
+        "الفصل 1 المقدمة — 2:30",
+        "الفصل 2 مراجعة الأدبيات — 2:00",
+        "الفصل 3 المنهجية والاستبيان — 2:30",
+        "الفصل 4 حالات الاستخدام — 2:00",
+        "الفصل 5 النمذجة والتصميم — 2:00",
+        "الفصل 6 التنفيذ وواجهات النظام — 2:30",
+        "الفصل 7 الاختبار — 2:00",
+        "الفصل 8 الخاتمة والتوصيات — 2:00"
+      ],
+      "en": [
+        "Ch.1 Introduction — 2:30",
+        "Ch.2 Literature Review — 2:00",
+        "Ch.3 Methodology & Survey — 2:30",
+        "Ch.4 Use Cases — 2:00",
+        "Ch.5 Modeling & Design — 2:00",
+        "Ch.6 Implementation & UI — 2:30",
+        "Ch.7 Testing — 2:00",
+        "Ch.8 Conclusion & Recommendations — 2:00"
+      ]
+    },
+    "note": {
+      "ar": "المجموع ≈ 15–17 دقيقة + أسئلة",
+      "en": "Total ≈ 15–17 minutes + Q&A"
+    },
+    "table": null,
+    "images": [],
+    "timing": "0:20"
+  },
+  {
+    "id": "ch1-open",
+    "chapter": 1,
+    "kind": "section",
+    "title": {
+      "ar": "الفصل 1 — المقدمة",
+      "en": "Chapter 1 — Introduction"
+    },
+    "subtitle": {
+      "ar": "السياق · المشكلة · الأهداف · الأهمية · النطاق",
+      "en": "Context · Problem · Objectives · Significance · Scope"
+    },
+    "bullets": {
+      "ar": [],
+      "en": []
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": null,
+    "images": [],
+    "timing": "2:30"
+  },
+  {
+    "id": "ch1-context",
+    "chapter": 1,
+    "kind": "content",
+    "title": {
+      "ar": "خلفية المشروع والسياق",
+      "en": "Background & Context"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [
+        "قطاع الصحة في غزة يعاني نقصًا مزمنًا في المتخصصين وضغطًا على المنشآت",
+        "كثير من المرضى يحتاجون رأيًا متخصصًا / متابعة / رأيًا ثانيًا",
+        "القنوات الحالية غالبًا غير رسمية: فيسبوك، واتساب، معارف شخصية",
+        "هذه القنوات بلا رقابة طبية، بلا خصوصية كافية، وبلا استمرارية رعاية",
+        "التطبيب عن بُعد حل عملي لتجاوز القيود الجغرافية ونقص الكوادر"
+      ],
+      "en": [
+        "Gaza healthcare faces chronic specialist shortage and facility pressure",
+        "Patients often need specialist opinions, follow-up, or second opinions",
+        "Current channels are mostly informal: Facebook, WhatsApp, personal contacts",
+        "These channels lack medical oversight, privacy, and care continuity",
+        "Telemedicine is a practical way to overcome geography and staffing gaps"
+      ]
+    },
+    "note": {
+      "ar": "نقطة الحديث: المشكلة ليست غياب الطب، بل غياب قناة منظمة وآمنة.",
+      "en": "Talking point: the issue is missing a secure organized channel—not healthcare itself."
+    },
+    "table": null,
+    "images": [],
+    "timing": "0:45"
+  },
+  {
+    "id": "ch1-problem",
+    "chapter": 1,
+    "kind": "content",
+    "title": {
+      "ar": "مشكلة البحث والحل المقترح",
+      "en": "Research Problem & Proposed Solution"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [
+        "المشكلة: غياب منصة إلكترونية آمنة ومنظّمة لاستشارات متخصصة عن بُعد",
+        "النتيجة: اعتماد على معلومات غير موثوقة ومخاطر خصوصية",
+        "الحل: GazaCare Connect — جسر رقمي بين مرضى غزة وأطباء متخصصين خارجها",
+        "الوظائف الجوهرية: استشارة نصية، رفع تقارير، رد منظم، متابعة، تحقق أطباء",
+        "مهم: النظام للاستشارات غير الطارئة — لا يستبدل الطوارئ أو العيادة الحضورية"
+      ],
+      "en": [
+        "Problem: no secure organized platform for remote specialist consultations",
+        "Consequence: unreliable advice and privacy risks",
+        "Solution: GazaCare Connect — digital bridge between Gaza patients and external specialists",
+        "Core features: text consults, uploads, structured replies, follow-up, physician verification",
+        "Important: non-emergency only — not a substitute for ER or in-person care"
+      ]
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": null,
+    "images": [],
+    "timing": "0:45"
+  },
+  {
+    "id": "ch1-objectives",
+    "chapter": 1,
+    "kind": "table",
+    "title": {
+      "ar": "الأهداف والأهمية والنطاق",
+      "en": "Objectives, Significance & Scope"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [],
+      "en": []
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": {
+      "headers_ar": [
+        "البعد",
+        "التفاصيل"
+      ],
+      "headers_en": [
+        "Dimension",
+        "Details"
+      ],
+      "rows_ar": [
+        [
+          "هدف رئيسي",
+          "تصميم وتطوير منصة تطبيب عن بُعد متكاملة وآمنة"
+        ],
+        [
+          "أهداف فرعية",
+          "وصول متخصص · سرعة رأي · أمان بيانات · استمرارية رعاية · قابلية استخدام"
+        ],
+        [
+          "أهمية إنسانية",
+          "تقليل معاناة المرضى وتحسين جودة الحياة"
+        ],
+        [
+          "أهمية تقنية",
+          "نموذج مرجعي لمنصة صحية قابلة للتوسع"
+        ],
+        [
+          "نطاق",
+          "مرضى غزة + أطباء خارجها · ويب · استشارات نصية وملفات"
+        ],
+        [
+          "قيود",
+          "إنترنت ضعيف · قوانين خصوصية · ليس للطوارئ · نتائج مرتبطة بالسياق"
+        ]
+      ],
+      "rows_en": [
+        [
+          "Main objective",
+          "Design and develop a secure integrated telemedicine platform"
+        ],
+        [
+          "Sub-objectives",
+          "Specialist access · timely advice · data security · continuity · usability"
+        ],
+        [
+          "Human value",
+          "Reduce patient suffering and improve quality of life"
+        ],
+        [
+          "Technical value",
+          "Reference model for a scalable health platform"
+        ],
+        [
+          "Scope",
+          "Gaza patients + external physicians · web · text consults & files"
+        ],
+        [
+          "Limits",
+          "Weak internet · privacy laws · not emergency · context-specific findings"
+        ]
+      ]
+    },
+    "images": [],
+    "timing": "1:00"
+  },
+  {
+    "id": "ch2-open",
+    "chapter": 2,
+    "kind": "section",
+    "title": {
+      "ar": "الفصل 2 — مراجعة الأدبيات",
+      "en": "Chapter 2 — Literature Review"
+    },
+    "subtitle": {
+      "ar": "التقنيات · الدراسات السابقة · الفجوة",
+      "en": "Technologies · Prior studies · Research gap"
+    },
+    "bullets": {
+      "ar": [],
+      "en": []
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": null,
+    "images": [],
+    "timing": "2:00"
+  },
+  {
+    "id": "ch2-tech",
+    "chapter": 2,
+    "kind": "table",
+    "title": {
+      "ar": "تقنيات التصميم والتطوير",
+      "en": "Design & Development Technologies"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [],
+      "en": []
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": {
+      "headers_ar": [
+        "الفئة",
+        "الأدوات",
+        "لماذا؟"
+      ],
+      "headers_en": [
+        "Category",
+        "Tools",
+        "Why?"
+      ],
+      "rows_ar": [
+        [
+          "تصميم UI/UX",
+          "Figma",
+          "نماذج أولية وتعاون سريع"
+        ],
+        [
+          "نمذجة",
+          "Edraw Max · Draw.io",
+          "مخططات تدفق وUML وER"
+        ],
+        [
+          "Frontend",
+          "React · Next.js · TypeScript",
+          "واجهة تفاعلية وأداء وصيانة"
+        ],
+        [
+          "Backend",
+          "Laravel · PHP",
+          "مصادقة، Middleware، أمان API"
+        ],
+        [
+          "بيانات",
+          "MySQL · phpMyAdmin",
+          "تخزين علائقي موثوق للسجلات الطبية"
+        ]
+      ],
+      "rows_en": [
+        [
+          "UI/UX design",
+          "Figma",
+          "Fast prototyping and collaboration"
+        ],
+        [
+          "Modeling",
+          "Edraw Max · Draw.io",
+          "Flow, UML, and ER diagrams"
+        ],
+        [
+          "Frontend",
+          "React · Next.js · TypeScript",
+          "Interactive UI, performance, maintainability"
+        ],
+        [
+          "Backend",
+          "Laravel · PHP",
+          "Auth, middleware, API security"
+        ],
+        [
+          "Data",
+          "MySQL · phpMyAdmin",
+          "Reliable relational storage for medical records"
+        ]
+      ]
+    },
+    "images": [
+      {
+        "src": "presentation-assets/media/image5.png",
+        "caption_ar": "React",
+        "caption_en": "React"
+      },
+      {
+        "src": "presentation-assets/media/image6.png",
+        "caption_ar": "Next.js",
+        "caption_en": "Next.js"
+      },
+      {
+        "src": "presentation-assets/media/image11.png",
+        "caption_ar": "Laravel",
+        "caption_en": "Laravel"
+      }
+    ],
+    "timing": "0:50"
+  },
+  {
+    "id": "ch2-compare",
+    "chapter": 2,
+    "kind": "table",
+    "title": {
+      "ar": "مقارنة المنصات السابقة",
+      "en": "Comparison of Related Platforms"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [],
+      "en": []
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": {
+      "headers_ar": [
+        "المنصة",
+        "نقاط القوة",
+        "الفجوات"
+      ],
+      "headers_en": [
+        "Platform",
+        "Strengths",
+        "Gaps"
+      ],
+      "rows_ar": [
+        [
+          "Gxza Health",
+          "توعية صحية · واجهة بسيطة",
+          "ضعف التخصص · ضعف رفع التقارير · إدارة استشارات محدودة"
+        ],
+        [
+          "MENA Health",
+          "تغطية إقليمية · واجهة سهلة",
+          "اعتماد أدوات خارجية (تيليجرام) · ضعف التخصص والملفات"
+        ],
+        [
+          "Heal Gaza",
+          "دعم عام سريع · وصول سهل",
+          "ليست مخصصة لإدارة استشارات رقمية متخصصة"
+        ]
+      ],
+      "rows_en": [
+        [
+          "Gxza Health",
+          "Health education · simple UI",
+          "Weak specialty focus · weak report uploads · limited consult management"
+        ],
+        [
+          "MENA Health",
+          "Regional coverage · easy UI",
+          "External tools (Telegram) · weak specialty/files"
+        ],
+        [
+          "Heal Gaza",
+          "Fast general support · easy access",
+          "Not focused on structured specialist digital consults"
+        ]
+      ]
+    },
+    "images": [
+      {
+        "src": "presentation-assets/media/image15.png",
+        "caption_ar": "Gxza Health",
+        "caption_en": "Gxza Health"
+      },
+      {
+        "src": "presentation-assets/media/image16.png",
+        "caption_ar": "MENA Health",
+        "caption_en": "MENA Health"
+      },
+      {
+        "src": "presentation-assets/media/image17.jpeg",
+        "caption_ar": "Heal Gaza",
+        "caption_en": "Heal Gaza"
+      }
+    ],
+    "timing": "0:50"
+  },
+  {
+    "id": "ch2-gap",
+    "chapter": 2,
+    "kind": "content",
+    "title": {
+      "ar": "الفجوة ومساهمة GazaCare Connect",
+      "en": "Gap & GazaCare Connect Contribution"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [
+        "الحاجة: استشارات متخصصة منظمة مع أطباء خارج غزة",
+        "رفع تقارير طبية (صور/PDF) داخل المنصة",
+        "تواصل ومتابعة داخل النظام بدل قنوات خارجية",
+        "تحقق إداري من بيانات الأطباء قبل السماح بالرد",
+        "خصوصية أعلى عبر مصادقة وصلاحيات وأمان ملفات",
+        "واجهة عربية RTL مناسبة لضعف الإنترنت (استشارة غير متزامنة)"
+      ],
+      "en": [
+        "Need: structured specialist consults with physicians outside Gaza",
+        "In-platform medical report uploads (images/PDF)",
+        "Follow-up messaging inside the system—not external chats",
+        "Admin verification of physicians before they can respond",
+        "Stronger privacy via auth, roles, and protected files",
+        "Arabic RTL UI suited to weak internet (asynchronous consults)"
+      ]
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": null,
+    "images": [],
+    "timing": "0:40"
+  },
+  {
+    "id": "ch3-open",
+    "chapter": 3,
+    "kind": "section",
+    "title": {
+      "ar": "الفصل 3 — منهجية البحث",
+      "en": "Chapter 3 — Research Methodology"
+    },
+    "subtitle": {
+      "ar": "Incremental · استبيان · متطلبات",
+      "en": "Incremental · Survey · Requirements"
+    },
+    "bullets": {
+      "ar": [],
+      "en": []
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": null,
+    "images": [
+      {
+        "src": "presentation-assets/media/image19.jpeg",
+        "caption_ar": "نموذج Incremental",
+        "caption_en": "Incremental model"
+      }
+    ],
+    "timing": "2:30"
+  },
+  {
+    "id": "ch3-method",
+    "chapter": 3,
+    "kind": "content",
+    "title": {
+      "ar": "لماذا Incremental Model؟",
+      "en": "Why Incremental Model?"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [
+        "تقسيم النظام لزيادات صغيرة: تحليل → تصميم → تنفيذ → اختبار",
+        "نموذج أولي مبكر (تسجيل + إرسال استشارة)",
+        "دمج ملاحظات المرضى والأطباء في كل زيادة",
+        "تقليل المخاطر خصوصًا أمان البيانات الطبية",
+        "أولوية للميزات الجوهرية قبل الثانوية"
+      ],
+      "en": [
+        "Split into small increments: analysis → design → implementation → testing",
+        "Early prototype (registration + consultation submission)",
+        "Integrate patient/physician feedback each increment",
+        "Reduce risk—especially medical-data security",
+        "Prioritize core features before secondary ones"
+      ]
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": null,
+    "images": [
+      {
+        "src": "presentation-assets/media/image19.jpeg",
+        "caption_ar": "Incremental",
+        "caption_en": "Incremental"
+      }
+    ],
+    "timing": "0:40"
+  },
+  {
+    "id": "ch3-survey",
+    "chapter": 3,
+    "kind": "table",
+    "title": {
+      "ar": "نتائج الاستبيان (n=65) → قرارات التصميم",
+      "en": "Survey Results (n=65) → Design Decisions"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [],
+      "en": []
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": {
+      "headers_ar": [
+        "النتيجة",
+        "النسبة",
+        "قرار النظام"
+      ],
+      "headers_en": [
+        "Finding",
+        "%",
+        "System decision"
+      ],
+      "rows_ar": [
+        [
+          "أصعب وصول: جلدية",
+          "30%",
+          "استشارات تخصصية أساسية"
+        ],
+        [
+          "زكام/إنفلونزا",
+          "25%",
+          "استشارات سريعة غير طارئة"
+        ],
+        [
+          "رأي ثانٍ عبر فيسبوك/واتساب",
+          "52%",
+          "بيئة موثّقة بدل القنوات غير الرسمية"
+        ],
+        [
+          "تشفير التقارير مهم جدًا",
+          "94%",
+          "Laravel + HTTPS + صلاحيات ملفات"
+        ],
+        [
+          "ضعف الإنترنت",
+          "45%",
+          "واجهة خفيفة + استشارة غير متزامنة"
+        ],
+        [
+          "مقدمو رعاية ~60%",
+          "≈60%",
+          "تفعيل Caregiver Mode"
+        ]
+      ],
+      "rows_en": [
+        [
+          "Hardest access: dermatology",
+          "30%",
+          "Core specialist teleconsults"
+        ],
+        [
+          "Cold/flu consults",
+          "25%",
+          "Fast non-emergency consults"
+        ],
+        [
+          "Second opinion via FB/WhatsApp",
+          "52%",
+          "Verified environment instead of informal channels"
+        ],
+        [
+          "Report encryption very important",
+          "94%",
+          "Laravel + HTTPS + file authorization"
+        ],
+        [
+          "Poor internet",
+          "45%",
+          "Lightweight UI + async consults"
+        ],
+        [
+          "Caregivers ~60%",
+          "≈60%",
+          "Enable Caregiver Mode"
+        ]
+      ]
+    },
+    "images": [
+      {
+        "src": "presentation-assets/media/image22.jpeg",
+        "caption_ar": "الاحتياجات التخصصية",
+        "caption_en": "Specialty needs"
+      },
+      {
+        "src": "presentation-assets/media/image23.jpeg",
+        "caption_ar": "قنوات التواصل",
+        "caption_en": "Communication channels"
+      }
+    ],
+    "timing": "1:10"
+  },
+  {
+    "id": "ch3-req",
+    "chapter": 3,
+    "kind": "table",
+    "title": {
+      "ar": "المتطلبات الوظيفية وغير الوظيفية",
+      "en": "Functional & Non-Functional Requirements"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [],
+      "en": []
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": {
+      "headers_ar": [
+        "الوحدة",
+        "أمثلة متطلبات"
+      ],
+      "headers_en": [
+        "Unit",
+        "Example requirements"
+      ],
+      "rows_ar": [
+        [
+          "مشتركة",
+          "Login · Reset/Change Password · Profile · Notifications · Logout"
+        ],
+        [
+          "مريض",
+          "تسجيل · Caregiver · تصفح أطباء · Queue/Direct · رفع ملفات ≤10MB · متابعة"
+        ],
+        [
+          "طبيب",
+          "تسجيل قيد تحقق · Claim طابور · توصية + Mild/Moderate/Critical · رسائل"
+        ],
+        [
+          "أدمن",
+          "إدارة مستخدمين · تعطيل حساب · Approve/Reject طبيب"
+        ],
+        [
+          "NFR",
+          "أمان HTTPS/RBAC · RTL عربي · أداء ضعيف شبكة · موثوقية"
+        ]
+      ],
+      "rows_en": [
+        [
+          "Shared",
+          "Login · Reset/Change Password · Profile · Notifications · Logout"
+        ],
+        [
+          "Patient",
+          "Register · Caregiver · browse physicians · Queue/Direct · uploads ≤10MB · follow-up"
+        ],
+        [
+          "Physician",
+          "Pending verification · claim queue · recommendation + severity · messages"
+        ],
+        [
+          "Admin",
+          "Manage users · disable account · approve/reject physician"
+        ],
+        [
+          "NFR",
+          "HTTPS/RBAC security · Arabic RTL · low-bandwidth performance · reliability"
+        ]
+      ]
+    },
+    "images": [],
+    "timing": "0:40"
+  },
+  {
+    "id": "ch4-open",
+    "chapter": 4,
+    "kind": "section",
+    "title": {
+      "ar": "الفصل 4 — حالات الاستخدام",
+      "en": "Chapter 4 — System Use Cases"
+    },
+    "subtitle": {
+      "ar": "مشتركة · مريض · طبيب · أدمن",
+      "en": "Shared · Patient · Physician · Admin"
+    },
+    "bullets": {
+      "ar": [],
+      "en": []
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": null,
+    "images": [],
+    "timing": "2:00"
+  },
+  {
+    "id": "ch4-shared-patient",
+    "chapter": 4,
+    "kind": "table",
+    "title": {
+      "ar": "Use Cases: المشتركة + المريض",
+      "en": "Use Cases: Shared + Patient"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [],
+      "en": []
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": {
+      "headers_ar": [
+        "ID",
+        "الحالة",
+        "الفاعل",
+        "ماذا يحدث؟"
+      ],
+      "headers_en": [
+        "ID",
+        "Use Case",
+        "Actor",
+        "What happens?"
+      ],
+      "rows_ar": [
+        [
+          "UC-01",
+          "Login",
+          "الكل",
+          "مصادقة وتوجيه للوحة حسب الدور"
+        ],
+        [
+          "UC-02/03",
+          "Reset/Change Password",
+          "الكل",
+          "استعادة أو تغيير كلمة المرور بأمان"
+        ],
+        [
+          "UC-05",
+          "Notifications",
+          "الكل",
+          "إشعارات تحقق/تعيين/رد/متابعة"
+        ],
+        [
+          "UC-08",
+          "Caregiver Mode",
+          "مريض",
+          "إرسال استشارة نيابة عن قريب"
+        ],
+        [
+          "UC-11",
+          "Submit Consultation",
+          "مريض",
+          "طابور مشترك أو طبيب مباشر + مرفقات"
+        ],
+        [
+          "UC-13/14",
+          "Status & Follow-up",
+          "مريض",
+          "تتبع الحالة ومراسلة بعد أول رد"
+        ]
+      ],
+      "rows_en": [
+        [
+          "UC-01",
+          "Login",
+          "All",
+          "Authenticate and route to role dashboard"
+        ],
+        [
+          "UC-02/03",
+          "Reset/Change Password",
+          "All",
+          "Securely recover or change password"
+        ],
+        [
+          "UC-05",
+          "Notifications",
+          "All",
+          "Verification/assignment/reply/follow-up alerts"
+        ],
+        [
+          "UC-08",
+          "Caregiver Mode",
+          "Patient",
+          "Submit consult on behalf of a relative"
+        ],
+        [
+          "UC-11",
+          "Submit Consultation",
+          "Patient",
+          "Shared queue or direct physician + attachments"
+        ],
+        [
+          "UC-13/14",
+          "Status & Follow-up",
+          "Patient",
+          "Track status and message after first reply"
+        ]
+      ]
+    },
+    "images": [],
+    "timing": "1:00"
+  },
+  {
+    "id": "ch4-doc-admin",
+    "chapter": 4,
+    "kind": "table",
+    "title": {
+      "ar": "Use Cases: الطبيب + الأدمن",
+      "en": "Use Cases: Physician + Admin"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [],
+      "en": []
+    },
+    "note": {
+      "ar": "Queue = أول طبيب متاح · Direct = طبيب يختاره المريض",
+      "en": "Queue = first available physician · Direct = patient-selected physician"
+    },
+    "table": {
+      "headers_ar": [
+        "ID",
+        "الحالة",
+        "الفاعل",
+        "ماذا يحدث؟"
+      ],
+      "headers_en": [
+        "ID",
+        "Use Case",
+        "Actor",
+        "What happens?"
+      ],
+      "rows_ar": [
+        [
+          "UC-15",
+          "Register Physician",
+          "طبيب",
+          "حساب Pending حتى موافقة الأدمن"
+        ],
+        [
+          "UC-17",
+          "Claim Queue",
+          "طبيب موثّق",
+          "استلام حالة من الطابور المشترك"
+        ],
+        [
+          "UC-20",
+          "Send Recommendation",
+          "طبيب",
+          "رد طبي + شدة الحالة + إكمال اختياري"
+        ],
+        [
+          "UC-21",
+          "Follow-up Message",
+          "طبيب",
+          "مراسلة آمنة داخل نفس الاستشارة"
+        ],
+        [
+          "UC-24",
+          "Disable Account",
+          "أدمن",
+          "تعطيل/تفعيل حسابات المستخدمين"
+        ],
+        [
+          "UC-25",
+          "Approve/Reject",
+          "أدمن",
+          "مراجعة شهادات الطبيب وإبلاغه بالنتيجة"
+        ]
+      ],
+      "rows_en": [
+        [
+          "UC-15",
+          "Register Physician",
+          "Physician",
+          "Pending account until admin approval"
+        ],
+        [
+          "UC-17",
+          "Claim Queue",
+          "Verified physician",
+          "Claim a case from the shared queue"
+        ],
+        [
+          "UC-20",
+          "Send Recommendation",
+          "Physician",
+          "Medical reply + severity + optional completion"
+        ],
+        [
+          "UC-21",
+          "Follow-up Message",
+          "Physician",
+          "Secure messaging in the same consultation"
+        ],
+        [
+          "UC-24",
+          "Disable Account",
+          "Admin",
+          "Disable/re-enable user accounts"
+        ],
+        [
+          "UC-25",
+          "Approve/Reject",
+          "Admin",
+          "Review credentials and notify outcome"
+        ]
+      ]
+    },
+    "images": [],
+    "timing": "1:00"
+  },
+  {
+    "id": "ch5-open",
+    "chapter": 5,
+    "kind": "section",
+    "title": {
+      "ar": "الفصل 5 — النمذجة والتصميم",
+      "en": "Chapter 5 — Modeling & Design"
+    },
+    "subtitle": {
+      "ar": "Activity · Use Case · Sequence · Class",
+      "en": "Activity · Use Case · Sequence · Class"
+    },
+    "bullets": {
+      "ar": [],
+      "en": []
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": null,
+    "images": [],
+    "timing": "2:00"
+  },
+  {
+    "id": "ch5-activity",
+    "chapter": 5,
+    "kind": "media",
+    "title": {
+      "ar": "Activity & Use Case Diagrams",
+      "en": "Activity & Use Case Diagrams"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [
+        "Activity: من Login/Register إلى إنشاء استشارة ثم رد ومتابعة",
+        "تفرّع حسب الدور: مريض / طبيب / أدمن",
+        "Use Case Diagram: تفاعلات الثلاثة مع الوظائف المشتركة والدور-مخصصة",
+        "خارج النطاق: لا مواعيد ولا مكالمات فيديو — استشارات نصية غير متزامنة"
+      ],
+      "en": [
+        "Activity: from login/register to consultation, response, and follow-up",
+        "Branches by role: patient / physician / admin",
+        "Use Case Diagram: three actors with shared and role-specific functions",
+        "Out of scope: no appointments/video — asynchronous text consults"
+      ]
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": null,
+    "images": [
+      {
+        "src": "presentation-assets/media/image27.png",
+        "caption_ar": "Activity Diagram",
+        "caption_en": "Activity Diagram"
+      },
+      {
+        "src": "presentation-assets/media/image28.jpeg",
+        "caption_ar": "Use Case Diagram",
+        "caption_en": "Use Case Diagram"
+      }
+    ],
+    "timing": "0:50"
+  },
+  {
+    "id": "ch5-sequence",
+    "chapter": 5,
+    "kind": "media",
+    "title": {
+      "ar": "Sequence Diagrams + Sanctum",
+      "en": "Sequence Diagrams + Sanctum"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [
+        "Register/Login عبر POST /api/v1/auth/*",
+        "النجاح يعيد Sanctum Token للجلسة",
+        "الفشل: 422 إيميل مكرر · 401 بيانات خاطئة · 403 حساب معطّل",
+        "Create Consultation و Physician Responds بنفس نمط UI → API → DB"
+      ],
+      "en": [
+        "Register/Login via POST /api/v1/auth/*",
+        "Success returns a Sanctum session token",
+        "Failures: 422 duplicate email · 401 bad credentials · 403 disabled account",
+        "Create Consultation and Physician Responds follow UI → API → DB"
+      ]
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": null,
+    "images": [
+      {
+        "src": "presentation-assets/media/image29.jpeg",
+        "caption_ar": "Register",
+        "caption_en": "Register"
+      },
+      {
+        "src": "presentation-assets/media/image30.jpeg",
+        "caption_ar": "Login",
+        "caption_en": "Login"
+      },
+      {
+        "src": "presentation-assets/media/image33.jpeg",
+        "caption_ar": "Create Consultation",
+        "caption_en": "Create Consultation"
+      },
+      {
+        "src": "presentation-assets/media/image34.jpeg",
+        "caption_ar": "Physician Responds",
+        "caption_en": "Physician Responds"
+      }
+    ],
+    "timing": "0:50"
+  },
+  {
+    "id": "ch5-class",
+    "chapter": 5,
+    "kind": "media",
+    "title": {
+      "ar": "Class Diagram → قاعدة التصميم",
+      "en": "Class Diagram → Design Blueprint"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [
+        "الكيانات: User, PhysicianProfile, MedicalProfile, Consultation, Message, File, Notification",
+        "العلاقات عبر مفاتيح أجنبية تضمن سلامة البيانات",
+        "يمهّد مباشرة لجداول MySQL في الفصل 6"
+      ],
+      "en": [
+        "Entities: User, PhysicianProfile, MedicalProfile, Consultation, Message, File, Notification",
+        "Foreign-key relationships keep data integrity",
+        "Directly prepares MySQL tables in Chapter 6"
+      ]
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": null,
+    "images": [
+      {
+        "src": "presentation-assets/media/image36.jpeg",
+        "caption_ar": "Class Diagram",
+        "caption_en": "Class Diagram"
+      }
+    ],
+    "timing": "0:40"
+  },
+  {
+    "id": "ch6-open",
+    "chapter": 6,
+    "kind": "section",
+    "title": {
+      "ar": "الفصل 6 — التنفيذ",
+      "en": "Chapter 6 — Implementation"
+    },
+    "subtitle": {
+      "ar": "معمارية · قاعدة بيانات · وحدات · واجهات",
+      "en": "Architecture · Database · Modules · UI"
+    },
+    "bullets": {
+      "ar": [],
+      "en": []
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": null,
+    "images": [],
+    "timing": "2:30"
+  },
+  {
+    "id": "ch6-arch",
+    "chapter": 6,
+    "kind": "content",
+    "title": {
+      "ar": "معمارية ثلاثية الطبقات",
+      "en": "Three-Tier Architecture"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [
+        "Presentation: React.js + Next.js + TypeScript (RTL عربي)",
+        "Application: Laravel REST API + PHP + Sanctum + RBAC",
+        "Data: MySQL عبر Migrations مع علاقات منضبطة",
+        "الفائدة: فصل الاهتمامات → أمان أعلى وصيانة أسهل وتوسّع أوضح"
+      ],
+      "en": [
+        "Presentation: React.js + Next.js + TypeScript (Arabic RTL)",
+        "Application: Laravel REST API + PHP + Sanctum + RBAC",
+        "Data: MySQL via migrations with disciplined relations",
+        "Benefit: separation of concerns → stronger security, easier maintenance, clearer scale"
+      ]
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": null,
+    "images": [
+      {
+        "src": "presentation-assets/media/image37.png",
+        "caption_ar": "Database Schema",
+        "caption_en": "Database Schema"
+      }
+    ],
+    "timing": "0:40"
+  },
+  {
+    "id": "ch6-db",
+    "chapter": 6,
+    "kind": "table",
+    "title": {
+      "ar": "تنفيذ قاعدة البيانات",
+      "en": "Database Implementation"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [],
+      "en": []
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": {
+      "headers_ar": [
+        "الجدول",
+        "الدور"
+      ],
+      "headers_en": [
+        "Table",
+        "Role"
+      ],
+      "rows_ar": [
+        [
+          "users",
+          "حسابات موحدة + role + حالة الحساب + Caregiver"
+        ],
+        [
+          "physician_profiles",
+          "تخصص وشهادات وحالة التحقق"
+        ],
+        [
+          "medical_profiles",
+          "تاريخ مرضي · حساسية · أدوية · طول/وزن"
+        ],
+        [
+          "consultations",
+          "طلب الاستشارة · Queue/Direct · الحالة · الشدة · الرد"
+        ],
+        [
+          "consultation_messages",
+          "خيط المتابعة بين المريض والطبيب"
+        ],
+        [
+          "medical_files",
+          "مرفقات مرتبطة بالمستخدم/الاستشارة"
+        ],
+        [
+          "notifications",
+          "إشعارات داخل التطبيق"
+        ],
+        [
+          "personal_access_tokens",
+          "توكنات Sanctum"
+        ]
+      ],
+      "rows_en": [
+        [
+          "users",
+          "Unified accounts + role + status + caregiver"
+        ],
+        [
+          "physician_profiles",
+          "Specialty, credentials, verification status"
+        ],
+        [
+          "medical_profiles",
+          "History · allergies · meds · height/weight"
+        ],
+        [
+          "consultations",
+          "Request · queue/direct · status · severity · reply"
+        ],
+        [
+          "consultation_messages",
+          "Follow-up thread between patient and physician"
+        ],
+        [
+          "medical_files",
+          "Attachments linked to user/consultation"
+        ],
+        [
+          "notifications",
+          "In-app notifications"
+        ],
+        [
+          "personal_access_tokens",
+          "Sanctum tokens"
+        ]
+      ]
+    },
+    "images": [],
+    "timing": "0:40"
+  },
+  {
+    "id": "ch6-ui-auth",
+    "chapter": 6,
+    "kind": "media",
+    "title": {
+      "ar": "واجهات المصادقة والتسجيل",
+      "en": "Authentication & Registration UI"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [
+        "Login موحّد يوجّه كل دور للوحة الخاصة به",
+        "تسجيل مريض وتسجيل طبيب مع رفع شهادات",
+        "Reset/Change Password عبر مسار آمن"
+      ],
+      "en": [
+        "Unified login routes each role to its dashboard",
+        "Patient and physician registration with credential upload",
+        "Secure reset/change password flows"
+      ]
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": null,
+    "images": [
+      {
+        "src": "presentation-assets/media/image38.png",
+        "caption_ar": "تسجيل الدخول",
+        "caption_en": "Login"
+      },
+      {
+        "src": "presentation-assets/media/image39.jpeg",
+        "caption_ar": "تسجيل مريض",
+        "caption_en": "Patient register"
+      },
+      {
+        "src": "presentation-assets/media/image40.jpeg",
+        "caption_ar": "تسجيل طبيب",
+        "caption_en": "Physician register"
+      },
+      {
+        "src": "presentation-assets/media/image41.jpeg",
+        "caption_ar": "استعادة كلمة المرور",
+        "caption_en": "Password reset"
+      }
+    ],
+    "timing": "0:35"
+  },
+  {
+    "id": "ch6-ui-patient",
+    "chapter": 6,
+    "kind": "media",
+    "title": {
+      "ar": "واجهات المريض",
+      "en": "Patient Interfaces"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [
+        "ملف طبي شامل + وضع مقدّم الرعاية",
+        "تصفح أطباء موثّقين حسب التخصص",
+        "إرسال استشارة Queue أو Direct مع مرفقات",
+        "تتبع الحالات والردود والمتابعة"
+      ],
+      "en": [
+        "Full medical profile + caregiver mode",
+        "Browse verified physicians by specialty",
+        "Submit queue or direct consults with attachments",
+        "Track cases, replies, and follow-up"
+      ]
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": null,
+    "images": [
+      {
+        "src": "presentation-assets/media/image62.png",
+        "caption_ar": "لوحة المريض",
+        "caption_en": "Patient dashboard"
+      },
+      {
+        "src": "presentation-assets/media/image43.jpeg",
+        "caption_ar": "الملف الطبي",
+        "caption_en": "Medical profile"
+      },
+      {
+        "src": "presentation-assets/media/image46.jpeg",
+        "caption_ar": "دليل الأطباء",
+        "caption_en": "Physician directory"
+      },
+      {
+        "src": "presentation-assets/media/image47.jpeg",
+        "caption_ar": "استشارة طابور",
+        "caption_en": "Queue consultation"
+      },
+      {
+        "src": "presentation-assets/media/image49.jpeg",
+        "caption_ar": "قائمة الاستشارات",
+        "caption_en": "Consultations list"
+      }
+    ],
+    "timing": "0:40"
+  },
+  {
+    "id": "ch6-ui-doc-admin",
+    "chapter": 6,
+    "kind": "media",
+    "title": {
+      "ar": "واجهات الطبيب والأدمن",
+      "en": "Physician & Admin Interfaces"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [
+        "لوحة طبيب: طابور · مباشر · قيد المراجعة · مكتمل",
+        "رد مع تصنيف الشدة + رسائل متابعة + ملفات",
+        "أدمن: إدارة مستخدمين + Approve/Reject للأطباء"
+      ],
+      "en": [
+        "Physician dashboard: queue · direct · in-review · completed",
+        "Reply with severity + follow-up messages + files",
+        "Admin: manage users + approve/reject physicians"
+      ]
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": null,
+    "images": [
+      {
+        "src": "presentation-assets/media/image59.png",
+        "caption_ar": "لوحة الطبيب",
+        "caption_en": "Physician dashboard"
+      },
+      {
+        "src": "presentation-assets/media/image51.jpeg",
+        "caption_ar": "نموذج الرد",
+        "caption_en": "Recommendation form"
+      },
+      {
+        "src": "presentation-assets/media/image58.png",
+        "caption_ar": "لوحة الأدمن",
+        "caption_en": "Admin dashboard"
+      },
+      {
+        "src": "presentation-assets/media/image57.png",
+        "caption_ar": "أطباء بانتظار التحقق",
+        "caption_en": "Pending physicians"
+      }
+    ],
+    "timing": "0:35"
+  },
+  {
+    "id": "ch7-open",
+    "chapter": 7,
+    "kind": "section",
+    "title": {
+      "ar": "الفصل 7 — الاختبار",
+      "en": "Chapter 7 — Testing"
+    },
+    "subtitle": {
+      "ar": "Unit · Integration · Usability · Security",
+      "en": "Unit · Integration · Usability · Security"
+    },
+    "bullets": {
+      "ar": [],
+      "en": []
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": null,
+    "images": [],
+    "timing": "2:00"
+  },
+  {
+    "id": "ch7-matrix",
+    "chapter": 7,
+    "kind": "table",
+    "title": {
+      "ar": "مصفوفة الاختبار",
+      "en": "Testing Matrix"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [],
+      "en": []
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": {
+      "headers_ar": [
+        "النوع",
+        "الأداة/الأسلوب",
+        "ماذا تحققنا؟"
+      ],
+      "headers_en": [
+        "Type",
+        "Tool/Approach",
+        "What we verified"
+      ],
+      "rows_ar": [
+        [
+          "Unit",
+          "PHPUnit",
+          "تسجيل · توكن · ملف طبي · إنشاء استشارة · رد طبيب"
+        ],
+        [
+          "Integration",
+          "مسارات End-to-End",
+          "دورة استشارة كاملة · رفع ملفات · RBAC · أخطاء عربية"
+        ],
+        [
+          "Usability",
+          "مهام حقيقية",
+          "إكمال المهام بلا مساعدة · RTL · موبايل"
+        ],
+        [
+          "Security",
+          "اختبارات حدود",
+          "401 بدون توكن · bcrypt · 403 عبر الأدوار · ملفات محمية · HTTPS"
+        ]
+      ],
+      "rows_en": [
+        [
+          "Unit",
+          "PHPUnit",
+          "Register · token · medical profile · create consult · doctor reply"
+        ],
+        [
+          "Integration",
+          "End-to-end flows",
+          "Full consult lifecycle · uploads · RBAC · Arabic errors"
+        ],
+        [
+          "Usability",
+          "Real tasks",
+          "Unaided completion · RTL · mobile"
+        ],
+        [
+          "Security",
+          "Boundary tests",
+          "401 without token · bcrypt · cross-role 403 · protected files · HTTPS"
+        ]
+      ]
+    },
+    "images": [],
+    "timing": "1:10"
+  },
+  {
+    "id": "ch7-security",
+    "chapter": 7,
+    "kind": "content",
+    "title": {
+      "ar": "أبرز نتائج الأمان وقابلية الاستخدام",
+      "en": "Key Security & Usability Outcomes"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [
+        "كلمات المرور مخزّنة كـ bcrypt فقط — لا نص صريح",
+        "الملفات خارج public وتُحمَّل عبر API يتحقق من الملكية",
+        "المريض لا يصل لطابور الطبيب، والطبيب لا يرد على حالة زميل",
+        "الواجهة العربية RTL تعمل على سطح المكتب والموبايل",
+        "مثال خطأ ودي: «فشل الاتصال بالخادم. تحقق من الإنترنت.»"
+      ],
+      "en": [
+        "Passwords stored as bcrypt only — never plaintext",
+        "Files outside public; downloaded via ownership-checked API",
+        "Patients cannot access doctor queue; doctors cannot reply to peers’ cases",
+        "Arabic RTL works on desktop and mobile",
+        "Friendly error example: “Server connection failed. Check your internet.”"
+      ]
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": null,
+    "images": [],
+    "timing": "0:50"
+  },
+  {
+    "id": "ch8-open",
+    "chapter": 8,
+    "kind": "section",
+    "title": {
+      "ar": "الفصل 8 — الخاتمة والتوصيات",
+      "en": "Chapter 8 — Conclusion & Recommendations"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [],
+      "en": []
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": null,
+    "images": [],
+    "timing": "2:00"
+  },
+  {
+    "id": "ch8-achieved",
+    "chapter": 8,
+    "kind": "content",
+    "title": {
+      "ar": "ما الذي أنجزناه؟",
+      "en": "What Did We Achieve?"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [
+        "منصة ويب آمنة تربط مرضى غزة بأطباء متخصصين موثّقين",
+        "تقليل الاعتماد على فيسبوك/واتساب كقناة طبية",
+        "دورة استشارة كاملة: إرسال → تعيين/استلام → رد → متابعة",
+        "RBAC + Sanctum + حماية ملفات + تحقق أطباء",
+        "منهجية Incremental مبنية على استبيان ميداني (65 مشاركًا)"
+      ],
+      "en": [
+        "Secure web platform linking Gaza patients to verified specialists",
+        "Reduced reliance on Facebook/WhatsApp as a medical channel",
+        "Full consult lifecycle: submit → assign/claim → reply → follow-up",
+        "RBAC + Sanctum + file protection + physician verification",
+        "Incremental methodology grounded in a field survey (n=65)"
+      ]
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": null,
+    "images": [],
+    "timing": "0:50"
+  },
+  {
+    "id": "ch8-future",
+    "chapter": 8,
+    "kind": "table",
+    "title": {
+      "ar": "التوصيات وآفاق التطوير",
+      "en": "Recommendations & Future Work"
+    },
+    "subtitle": {
+      "ar": "",
+      "en": ""
+    },
+    "bullets": {
+      "ar": [],
+      "en": []
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": {
+      "headers_ar": [
+        "لمن؟",
+        "التوصية"
+      ],
+      "headers_en": [
+        "For whom?",
+        "Recommendation"
+      ],
+      "rows_ar": [
+        [
+          "مؤسسات صحية/NGOs",
+          "تبنّي منصات تطبيب منظمة بدل القنوات غير الرسمية"
+        ],
+        [
+          "المؤسسات الطبية",
+          "إجراءات تحقق رسمية للأطباء كما في النظام"
+        ],
+        [
+          "صنّاع السياسات",
+          "دعم حلول الصحة الرقمية ضمن التحديث الصحي"
+        ],
+        [
+          "تطوير مستقبلي",
+          "تقييم أطباء · تحليلات · موبايل/PWA · ثنائية لغة"
+        ],
+        [
+          "تطوير مستقبلي",
+          "Dark Mode · فيديو آمن · AI مساعد مع بقاء القرار للطبيب"
+        ]
+      ],
+      "rows_en": [
+        [
+          "Health orgs/NGOs",
+          "Adopt structured telemedicine instead of informal channels"
+        ],
+        [
+          "Medical institutions",
+          "Formal physician verification as in this system"
+        ],
+        [
+          "Policymakers",
+          "Support digital-health solutions in healthcare modernization"
+        ],
+        [
+          "Future development",
+          "Ratings · analytics · mobile/PWA · bilingual UI"
+        ],
+        [
+          "Future development",
+          "Dark mode · secure video · AI assist with physician final authority"
+        ]
+      ]
+    },
+    "images": [],
+    "timing": "0:50"
+  },
+  {
+    "id": "thanks",
+    "chapter": null,
+    "kind": "hero",
+    "title": {
+      "ar": "شكرًا لكم — جاهزون للأسئلة",
+      "en": "Thank You — Questions Welcome"
+    },
+    "subtitle": {
+      "ar": "GazaCare Connect · جسر طبي آمن ومنظم",
+      "en": "GazaCare Connect · A secure structured medical bridge"
+    },
+    "bullets": {
+      "ar": [
+        "بديل عملي للقنوات غير الرسمية",
+        "مبني على احتياج محلي حقيقي",
+        "قابل للتوسع بثقة أمنية وهندسية"
+      ],
+      "en": [
+        "A practical alternative to informal channels",
+        "Built on real local needs",
+        "Extensible with security and engineering confidence"
+      ]
+    },
+    "note": {
+      "ar": "",
+      "en": ""
+    },
+    "table": null,
+    "images": [
+      {
+        "src": "presentation-assets/media/image63.png",
+        "caption_ar": "الواجهة الرئيسية",
+        "caption_en": "Main interface"
+      }
+    ],
+    "timing": "0:30"
+  }
+]
