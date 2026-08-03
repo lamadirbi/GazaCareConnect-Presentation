@@ -2035,7 +2035,6 @@
         "قاعدة البيانات: MySQL، وأداة الإدارة phpMyAdmin",
         "معمارية ثلاثية الطبقات: العرض → التطبيق (REST API) → البيانات",
         "جدول users موحّد لجميع الأدوار عبر حقل role (وليس جداول منفصلة)",
-        "لا يوجد جدول توصيات منفصل؛ الرد يُخزَّن داخل جدول consultations وconsultation_messages",
         "8 جداول رئيسية: users, physician_profiles, medical_profiles, consultations, consultation_messages, medical_files, notifications, personal_access_tokens",
         "10 وحدات وظيفية: Auth, Profile, Caregiver, Directory, Consultation, Medical Reports, Follow-up, Notification, Admin, Dashboard",
         "25 حالة استخدام (UC-01 إلى UC-25) جميعها منفَّذة (Implemented)",
