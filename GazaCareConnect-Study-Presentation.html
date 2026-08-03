@@ -20,7 +20,7 @@ body{overflow:hidden}
 body.en{font-family:var(--en)}
 body.en .slide-title,body.en .summary,body.en .lead,body.en .bullet,body.en .note,body.en .caption,body.en .section-sub{direction:ltr;text-align:left}
 body.en table{direction:ltr}
-#app{height:100%;display:grid;grid-template-rows:58px minmax(0,1fr) 66px}
+#app{height:100%;display:grid;grid-template-rows:58px minmax(0,1fr) auto}
 .topbar,.nav{background:#fff;border-color:var(--line)}
 .topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 14px;border-bottom:1px solid var(--line)}
 .brand{display:flex;gap:10px;align-items:center;min-width:0}
@@ -112,11 +112,11 @@ tr:nth-child(even) td{background:#f7fbfc}
 .caption{padding:10px 12px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line)}
 .section-slide .slide-title{margin-top:8vh;font-size:clamp(30px,4.5vw,48px)}
 .nav{
-  display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;
-  padding:8px 16px;border-top:1px solid var(--line);background:#fff;min-height:66px
+  display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:12px;
+  padding:10px 16px;border-top:1px solid var(--line);background:#fff;min-height:72px
 }
-.nav-mid{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
-.nav-actions{display:flex;align-items:center;gap:8px}
+.nav-mid{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0;width:100%}
+.nav-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .nav-btn{
   display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border:1px solid var(--line);
   border-radius:999px;background:#fff;color:var(--teal2);cursor:pointer;font:700 13px var(--ar)
@@ -124,10 +124,12 @@ tr:nth-child(even) td{background:#f7fbfc}
 .nav-btn:hover{background:var(--teal2);color:#fff;border-color:var(--teal2)}
 .nav-btn span.arrow{font-family:var(--en);font-size:16px;line-height:1}
 .progress-text{
-  font-family:var(--ar);font-size:12px;color:var(--muted);text-align:center;font-weight:700
+  font-family:var(--ar);font-size:13px;color:var(--ink);text-align:center;font-weight:800;
+  white-space:nowrap;line-height:1.4;flex-shrink:0;padding:0 8px
 }
 .chapter-rail{
-  display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;max-width:100%
+  display:flex;flex-wrap:nowrap;gap:6px;justify-content:flex-start;align-items:center;
+  max-width:100%;overflow-x:auto;overflow-y:hidden;padding:2px 4px;scrollbar-width:thin
 }
 .bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--teal),#7ad9d1);z-index:30;width:0;transition:width .25s}
 .chip{
@@ -226,8 +228,8 @@ body.en .nav-btn, body.en .chip, body.en .progress-text{font-family:var(--en)}
       </button>
     </div>
     <div class="nav-mid">
-      <div class="chapter-rail" id="rail"></div>
       <div class="progress-text" id="prog">الشريحة 1 من 1</div>
+      <div class="chapter-rail" id="rail"></div>
     </div>
     <div class="nav-actions">
       <button type="button" class="nav-btn" id="next" aria-label="التالي">
