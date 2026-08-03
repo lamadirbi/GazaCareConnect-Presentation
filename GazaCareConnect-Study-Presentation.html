@@ -152,9 +152,10 @@ body.en .nav-btn, body.en .chip, body.en .progress-text{font-family:var(--en)}
   background:#fff;border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.28)
 }
 .lightbox img{
-  max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;
+  max-width:none;max-height:none;width:auto;height:auto;object-fit:contain;
   transform-origin:center center;transition:transform .08s linear;user-select:none;
-  -webkit-user-drag:none;cursor:grab;padding:10px;background:#fff
+  -webkit-user-drag:none;cursor:grab;padding:0;background:#fff;
+  image-rendering:auto
 }
 .lightbox img.dragging{cursor:grabbing;transition:none}
 .lightbox-ui{
@@ -410,7 +411,7 @@ document.getElementById('btnFs').onclick = ()=>{
   else document.exitFullscreen();
 };
 
-let lbScale = 1, lbX = 0, lbY = 0, lbDragging = false, lbLastX = 0, lbLastY = 0;
+let lbScale = 1, lbFit = 1, lbX = 0, lbY = 0, lbDragging = false, lbLastX = 0, lbLastY = 0;
 const lbStage = document.getElementById('lbStage');
 const lbZoomLabel = document.getElementById('lbZoomLabel');
 const lbClose = document.getElementById('lbClose');
@@ -418,8 +419,16 @@ const lbZoomIn = document.getElementById('lbZoomIn');
 const lbZoomOut = document.getElementById('lbZoomOut');
 const lbZoomReset = document.getElementById('lbZoomReset');
 
+function lbMaxScale(){
+  // Allow zoom at least to native resolution, and a bit beyond.
+  return Math.min(8, Math.max(4, 1 / Math.max(lbFit, 0.05)));
+}
 function applyLbTransform(){
-  lightboxImg.style.transform = `translate(${lbX}px, ${lbY}px) scale(${lbScale})`;
+  const nw = lightboxImg.naturalWidth || 1;
+  const displayW = Math.max(1, nw * lbFit * lbScale);
+  lightboxImg.style.width = displayW + 'px';
+  lightboxImg.style.height = 'auto';
+  lightboxImg.style.transform = `translate(${lbX}px, ${lbY}px)`;
   lbZoomLabel.textContent = Math.round(lbScale * 100) + '%';
   lightboxImg.style.cursor = lbScale > 1 ? (lbDragging ? 'grabbing' : 'grab') : 'zoom-in';
 }
@@ -427,11 +436,27 @@ function resetLbZoom(){
   lbScale = 1; lbX = 0; lbY = 0; lbDragging = false;
   applyLbTransform();
 }
+function computeLbFit(){
+  const nw = lightboxImg.naturalWidth;
+  const nh = lightboxImg.naturalHeight;
+  if(!nw || !nh) return 1;
+  const rect = lbStage.getBoundingClientRect();
+  const pad = 28;
+  return Math.min((rect.width - pad) / nw, (rect.height - pad) / nh, 1);
+}
+function prepareLightboxImage(){
+  lbFit = computeLbFit();
+  resetLbZoom();
+}
 function openLightbox(src){
-  lightboxImg.src = src;
   lightbox.classList.add('show');
   lightbox.setAttribute('aria-hidden', 'false');
-  resetLbZoom();
+  lightboxImg.onload = prepareLightboxImage;
+  if(lightboxImg.getAttribute('src') === src && lightboxImg.complete && lightboxImg.naturalWidth){
+    prepareLightboxImage();
+  } else {
+    lightboxImg.src = src;
+  }
 }
 function closeLightbox(){
   lightbox.classList.remove('show');
@@ -440,10 +465,9 @@ function closeLightbox(){
 }
 function zoomBy(delta, cx, cy){
   const prev = lbScale;
-  lbScale = Math.min(5, Math.max(1, +(lbScale + delta).toFixed(2)));
+  lbScale = Math.min(lbMaxScale(), Math.max(1, +(lbScale + delta).toFixed(2)));
   if(lbScale === 1){ lbX = 0; lbY = 0; }
   else if(typeof cx === 'number' && typeof cy === 'number'){
-    // keep point under cursor roughly stable
     const rect = lightboxImg.getBoundingClientRect();
     const ox = cx - (rect.left + rect.width / 2);
     const oy = cy - (rect.top + rect.height / 2);
