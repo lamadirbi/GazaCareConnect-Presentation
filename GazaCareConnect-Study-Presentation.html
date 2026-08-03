@@ -296,8 +296,11 @@ function render(){
       }
     }
     const layoutClass = (!right ? 'solo' : (s.kind==='gallery' && !hasBullets && !hasTable ? 'gallery-only' : ''));
+    const hint = hasImgs
+      ? (lang==='ar'?'اضغطوا على الصورة لتكبيرها كاملة بدون قص':'Click an image to open it fully without cropping')
+      : (lang==='ar'?'السهمين للتنقل بين الشرائح':'Use the arrows to change slides');
     body = `<div class="layout ${layoutClass}"><div>${left}</div>${right?`<div>${right}</div>`:''}</div>
-      <p class="hint">${lang==='ar'?'اضغطوا على الصورة لتكبيرها كاملة بدون قص':'Click an image to open it fully without cropping'}</p>`;
+      <p class="hint">${hint}</p>`;
   }
 
   const kicker = s.chapter
