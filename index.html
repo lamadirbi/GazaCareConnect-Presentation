@@ -4,38 +4,65 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GazaCare Connect — الشرح والبرزنتيشن</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet" />
 <style>
-body{margin:0;font-family:Cairo,sans-serif;background:#f4fafb;color:#0f2a31;min-height:100vh;display:grid;place-items:center;padding:24px}
-.card{max-width:640px;width:100%;background:#fff;border:1px solid rgba(15,143,134,.2);border-radius:22px;padding:28px;box-shadow:0 16px 40px rgba(15,42,49,.08)}
-h1{margin:0 0 8px;font-size:26px}
-p{color:#4d6d74;line-height:1.7;margin:0 0 8px}
-h2{margin:22px 0 10px;font-size:16px;color:#0b6f69}
-a{display:block;margin:10px 0;padding:14px 16px;border-radius:14px;text-decoration:none;font-weight:800;background:linear-gradient(135deg,#0f8f86,#0b6f69);color:#fff}
-a.secondary{background:#fff;color:#0b6f69;border:1px solid rgba(15,143,134,.25)}
-a.appendix{padding:12px 14px;font-size:14px}
+:root{--navy:#07161c;--teal:#0e9f94;--line:rgba(255,255,255,.12)}
+*{box-sizing:border-box}
+body{
+  margin:0;min-height:100vh;font-family:"IBM Plex Sans Arabic",sans-serif;color:#eef7f6;
+  background:
+    radial-gradient(800px 360px at 90% 0%, rgba(14,159,148,.28), transparent 60%),
+    linear-gradient(160deg,#07161c 0%, #0c2430 55%, #12343c 100%);
+  padding:28px 18px
+}
+.wrap{max-width:920px;margin:0 auto}
+.hero{margin-bottom:28px}
+.eyebrow{font-family:Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;font-size:11px;color:#7ee0d6;margin-bottom:10px}
+h1{margin:0 0 8px;font-size:clamp(32px,6vw,52px);letter-spacing:-.04em}
+.lead{max-width:46ch;color:#c5ddd9;line-height:1.8;margin:0 0 22px}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+.card{
+  background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:22px;padding:18px;
+  backdrop-filter:blur(12px)
+}
+.card h2{margin:0 0 12px;font-size:15px;color:#7ee0d6}
+a{
+  display:block;margin:8px 0;padding:13px 14px;border-radius:14px;text-decoration:none;font-weight:700;
+  background:rgba(255,255,255,.08);color:#f4fffd;border:1px solid rgba(255,255,255,.08)
+}
+a.primary{background:linear-gradient(135deg,#0e9f94,#0b7d74);border:0}
+a.appendix{font-size:14px;padding:11px 13px}
 </style>
 </head>
 <body>
-<div class="card">
-<h1>GazaCare Connect</h1>
-<p>دليل الشرح الشامل والبرزنتيشن التفصيلي لمشروع التخرج.</p>
-
-<a href="GazaCare_Full_Explanation_CURRENT.html">فتح دليل الشرح الكامل</a>
-<a class="secondary" href="GazaCareConnect-Study-Presentation.html?v=20260805j">فتح البرزنتيشن التفاعلي</a>
-<a class="secondary" href="docs/GazaCareConnect-Documentation.pdf" download>تحميل توثيق المشروع (PDF)</a>
-<a class="secondary" href="GazaCare_Full_Explanation_CURRENT.docx">تنزيل دليل الشرح (Word)</a>
-<a class="secondary" href="GazaCareConnect-Presentation.pptx">تنزيل PPTX عربي</a>
-<a class="secondary" href="GazaCareConnect-Presentation-EN.pptx">تنزيل PPTX English</a>
-
-<h2>الملاحق</h2>
-<a class="secondary appendix" href="https://docs.google.com/spreadsheets/d/1RtWErAtQlgQwOB8UUtPLV7tVUgr8jahN/edit?usp=drive_link&ouid=116200435113213369578&rtpof=true&sd=true" target="_blank" rel="noopener">ملحق أ: إحصائيات الاستبيان</a>
-<a class="secondary appendix" href="https://drive.google.com/file/d/1XqZz6WIOdI0pDTbi9WIBoUOdjeXV1JYV/view?usp=sharing" target="_blank" rel="noopener">ملحق ب: عيوب المنصات السابقة</a>
-<a class="secondary appendix" href="https://github.com/lamadirbi/GazaCareConnect-backend" target="_blank" rel="noopener">ملحق ج: مستودع الباك اند</a>
-<a class="secondary appendix" href="https://github.com/lamadirbi/GazaCareConnect-frontend" target="_blank" rel="noopener">ملحق ج: مستودع الفرونت اند</a>
-<a class="secondary appendix" href="https://gazacareconnect.netlify.app/" target="_blank" rel="noopener">ملحق د: النسخة التجريبية</a>
-<a class="secondary appendix" href="https://drive.google.com/file/d/19TrhEm1MVjwikXOv5UI4GDDuasFbqYOn/view?usp=sharing" target="_blank" rel="noopener">ملحق هـ: خطة الاختبار</a>
-<a class="secondary appendix" href="https://www.figma.com/design/R9aQTe6Q0VIsQ0TCX7GdZe/gazacareconnect?node-id=5-584&t=QEazAm5Bt7hmu4Wx-1" target="_blank" rel="noopener">ملحق و: تصميم الواجهات</a>
+<div class="wrap">
+  <div class="hero">
+    <div class="eyebrow">University of Palestine · 2025–2026</div>
+    <h1>GazaCare Connect</h1>
+    <p class="lead">دليل الشرح الشامل والبرزنتيشن التفصيلي لمشروع التخرج — منصة استشارة طبية عن بُعد آمنة ومنظمة.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <h2>العرض والتوثيق</h2>
+      <a class="primary" href="GazaCareConnect-Study-Presentation.html?v=20260805k">فتح البرزنتيشن التفاعلي</a>
+      <a href="GazaCare_Full_Explanation_CURRENT.html">فتح دليل الشرح الكامل</a>
+      <a href="docs/GazaCareConnect-Documentation.pdf" download>تحميل توثيق المشروع (PDF)</a>
+      <a href="GazaCare_Full_Explanation_CURRENT.docx">تنزيل دليل الشرح (Word)</a>
+      <a href="GazaCareConnect-Presentation.pptx">تنزيل PPTX عربي</a>
+      <a href="GazaCareConnect-Presentation-EN.pptx">تنزيل PPTX English</a>
+    </div>
+    <div class="card">
+      <h2>الملاحق</h2>
+      <a class="appendix" href="https://docs.google.com/spreadsheets/d/1RtWErAtQlgQwOB8UUtPLV7tVUgr8jahN/edit?usp=drive_link&ouid=116200435113213369578&rtpof=true&sd=true" target="_blank" rel="noopener">ملحق أ: إحصائيات الاستبيان</a>
+      <a class="appendix" href="https://drive.google.com/file/d/1XqZz6WIOdI0pDTbi9WIBoUOdjeXV1JYV/view?usp=sharing" target="_blank" rel="noopener">ملحق ب: عيوب المنصات السابقة</a>
+      <a class="appendix" href="https://github.com/lamadirbi/GazaCareConnect-backend" target="_blank" rel="noopener">ملحق ج: مستودع الباك اند</a>
+      <a class="appendix" href="https://github.com/lamadirbi/GazaCareConnect-frontend" target="_blank" rel="noopener">ملحق ج: مستودع الفرونت اند</a>
+      <a class="appendix" href="https://gazacareconnect.netlify.app/" target="_blank" rel="noopener">ملحق د: النسخة التجريبية</a>
+      <a class="appendix" href="https://drive.google.com/file/d/19TrhEm1MVjwikXOv5UI4GDDuasFbqYOn/view?usp=sharing" target="_blank" rel="noopener">ملحق هـ: خطة الاختبار</a>
+      <a class="appendix" href="https://www.figma.com/design/R9aQTe6Q0VIsQ0TCX7GdZe/gazacareconnect?node-id=5-584&t=QEazAm5Bt7hmu4Wx-1" target="_blank" rel="noopener">ملحق و: تصميم الواجهات</a>
+    </div>
+  </div>
 </div>
 </body>
 </html>
